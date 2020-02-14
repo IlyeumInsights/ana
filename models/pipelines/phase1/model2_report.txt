@@ -1,0 +1,84 @@
+
+DATA PREPARATION REPORT: 
+-----
+Data source:        C:\Users\Nara\Workspace\datasets\Contrats\datasetSentence2Train
+Data Granularity:   1
+Label Granularity:  0
+Label classif col:  2
+Label classif cla:  ['objet', 'general', 'duree', 'lieu', 'obligations', 'paiement', 'resiliation', 'non_sollicitation', 'non_concurrence', 'confidentialite', 'responsabilites', 'indemnisation', 'prop_intel', 'legal', 'autres']
+Data selection:     [[[], [], []], [[], []]]
+Selected Transform: count
+Binary classif:     False
+Restricted classif: ['non_sollicitation', 'resiliation', 'paiement', 'non_concurrence']
+Genetic oversample: True
+-----
+Labels Mapping: 
+general: -1
+obligations: -1
+paiement: 3
+confidentialite: -1
+prop_intel: -1
+responsabilites: -1
+resiliation: 2
+non_concurrence: 4
+indemnisation: -1
+duree: -1
+autres: -1
+legal: -1
+objet: -1
+non_sollicitation: 1
+lieu: -1
+-----
+Initial Y size: 1305
+post-transform X train size: 106790
+post-transform Y train size: 106790
+post-transform X test size:  327
+post-transform Y test size:  327
+-----
+END DATA PREPARATION REPORT. 
+
+-----
+CLASSIFICATION REPORT: 
+Accuracy:84.71%
+              precision    recall  f1-score   support
+
+          -1       0.98      0.79      0.87       201
+           1       0.87      1.00      0.93        20
+           2       0.74      0.89      0.81        45
+           3       0.69      0.96      0.80        50
+           4       0.59      0.91      0.71        11
+
+    accuracy                           0.85       327
+   macro avg       0.77      0.91      0.83       327
+weighted avg       0.88      0.85      0.85       327
+
+Predicted: 
+[ 3 -1 -1 -1  4 -1 -1 -1 -1  3  1 -1 -1 -1  4  2 -1 -1 -1  3 -1 -1  3  3
+  2  3 -1 -1 -1  4  2  2  1 -1  2  1  1 -1  2 -1  2  2 -1  3 -1 -1  4  3
+  3  4 -1  3 -1 -1 -1 -1 -1 -1 -1 -1 -1  3  3 -1  3  2 -1 -1  3  2 -1  4
+  3 -1 -1  2 -1  1 -1 -1  2  4 -1 -1 -1  2  2  3  3  4  2 -1  3  2  1 -1
+ -1 -1  3 -1 -1 -1  3 -1  3 -1 -1  3 -1  3 -1  1 -1  2 -1 -1  1 -1  3 -1
+ -1  4 -1  2 -1  1  1 -1  3  3  3  1 -1 -1  3  2  1 -1  3 -1  3  3 -1  3
+ -1 -1  3 -1  3  3  3 -1 -1 -1 -1 -1 -1 -1 -1 -1  2  3  2  1  2 -1 -1  2
+  3  3  3 -1  2 -1 -1  3 -1 -1  3 -1  3  3 -1 -1  2  3 -1 -1  4  2 -1 -1
+  1  2  3  1  3 -1 -1  1  4  2  3  2  2 -1  2  2  3 -1 -1 -1 -1 -1 -1 -1
+  2 -1 -1  3 -1 -1  2 -1 -1  3 -1  2 -1  2  3 -1 -1 -1 -1  3 -1 -1  3 -1
+ -1 -1 -1 -1 -1 -1  3 -1  3 -1 -1  2  3 -1  2  4 -1 -1  4  2  3  3  1  3
+  1  4 -1 -1 -1 -1 -1 -1  1  3  1  3  2  3  2 -1  1  1 -1 -1  1  2  4 -1
+ -1  2  3 -1 -1  2  2 -1  2 -1 -1  2 -1 -1  3  2  2 -1  3  4  2  2 -1 -1
+ -1  3 -1 -1 -1 -1  2 -1  3  3  2 -1  4  2  3]
+Expected: 
+[-1 -1 -1 -1 -1 -1 -1 -1 -1  3  1 -1 -1 -1  4  2 -1 -1 -1 -1  3 -1  3 -1
+  2  3 -1 -1 -1  4  2  2  1 -1  2  1  1 -1  2 -1 -1  2 -1  3 -1 -1  4 -1
+ -1 -1 -1  3 -1 -1 -1 -1 -1 -1 -1 -1  2  2 -1 -1  3  2 -1 -1 -1  2 -1 -1
+  3 -1 -1  2 -1  1 -1 -1  2  4 -1 -1 -1  2 -1  3  3  2  2 -1 -1  2  1 -1
+ -1 -1  3 -1 -1 -1 -1 -1  3 -1 -1  3 -1  3 -1  1 -1 -1 -1 -1  1 -1 -1  2
+ -1  4 -1  2 -1  4  1 -1  3  3  3  1 -1 -1  3  2  1 -1 -1 -1 -1  3 -1 -1
+ -1 -1  3 -1  3 -1  3 -1 -1 -1 -1 -1 -1 -1 -1 -1  2  3 -1  1  2 -1 -1 -1
+  3  3  3 -1  2 -1 -1  3 -1 -1  3 -1  3 -1 -1  3 -1  3 -1 -1  4  2 -1 -1
+  1  2  3 -1  3 -1 -1  1 -1  2  3 -1  2 -1  2  2  3 -1 -1 -1 -1 -1 -1 -1
+  2 -1 -1  3 -1 -1  2 -1 -1  3 -1  2 -1  2 -1 -1 -1 -1 -1 -1 -1 -1  3 -1
+ -1 -1 -1 -1 -1 -1  3 -1  3 -1 -1 -1  3 -1  2  4 -1 -1  4  2  3 -1  1 -1
+  1  4 -1 -1 -1 -1 -1 -1  1 -1  1  3 -1  3  2 -1  1  1 -1 -1  2  2 -1 -1
+ -1  2 -1 -1 -1  2  2 -1  2 -1 -1 -1 -1 -1  3  2 -1 -1  3  4  2 -1 -1 -1
+ -1  3 -1 -1 -1 -1 -1 -1  3  3  2 -1 -1 -1  3]

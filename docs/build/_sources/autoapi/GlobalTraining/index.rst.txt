@@ -1,0 +1,65 @@
+:mod:`GlobalTraining`
+=====================
+
+.. py:module:: GlobalTraining
+
+.. autoapi-nested-parse::
+
+   module GlobalTraining
+
+   Generate all pipelines for all three phases and all anomomalies
+   through an AutoML like approach directed by rules (politics).
+   Three phases:
+   - Classification of clause per (relevant) type
+   - Prediction of anomaly
+   - Classification of detected anomaly
+   It uses the policies as logic rules to orient the learning.
+
+   Functions
+       generatePhaseOnePipeline
+       generatePhaseTwoPipeline
+       generatePhaseThreePipeline
+
+
+
+Module Contents
+---------------
+
+.. function:: generatePhaseOnePipeline()
+
+   generatePhaseOnePipeline
+
+   Determine and train the best pipeline for classifiying clauses according
+   to their types.
+   It explores several data preparation parameters (feature extraction,
+   oversamplings) and granulairty.
+   This pipeline always consider two subclassifiers, each dedicated to a
+   granularity (sentence and clause).
+   The pipeline is exported in the model directory.
+
+
+.. function:: generatePhaseTwoPipeline()
+
+   generatePhaseTwoPipeline
+
+   Determine and train the best pipeline for detecting anomalies in clauses
+   (phase 2).
+   It explores several data preparation parameters (feature extraction,
+   oversamplings) and granulairty.
+   This pipeline always consider several subclassifiers combinations.
+   The pipeline is exported in the model directory.
+
+
+.. function:: generatePhaseThreePipeline()
+
+   generatePhaseThreePipeline
+
+   Determine and train the best pipeline for classifying anomalies of clauses
+   (phase 3). In other words, it aims to determine the violated policies of
+   an anomalous clause.
+   It explores several data preparation parameters (feature extraction,
+   oversamplings) and granulairty.
+   This pipeline always consider several subclassifiers combinations.
+   The pipeline is exported in the model directory.
+
+

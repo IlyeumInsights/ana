@@ -1,0 +1,49 @@
+:mod:`config`
+=============
+
+.. py:module:: config
+
+
+Module Contents
+---------------
+
+.. data:: EXPORT_FOLDER
+   :annotation: = C:/Users/Nara/Documents/gestionContrat/EXPORT/
+
+   
+
+.. data:: UPLOAD_FOLDER
+   :annotation: = C:/Users/Nara/Documents/gestionContrat/FILES/
+
+   
+
+.. data:: EXPORT_FILE
+   :annotation: = export.txt
+
+   
+
+.. data:: SECTIONS_TITLE
+   :annotation: = ^ARTICLE ([0-9]*)
+
+   
+
+.. data:: ALLOWED_EXTENSIONS
+   :annotation: = ['pdf', 'PDF']
+
+   
+
+.. data:: DPI
+   :annotation: = 200
+
+   
+
+.. data:: FORMAT
+   :annotation: = jpg
+
+   
+
+.. data:: THREAD_COUNT
+   :annotation: = 5
+
+   
+

@@ -1,0 +1,70 @@
+:mod:`CompositeClassifier`
+==========================
+
+.. py:module:: CompositeClassifier
+
+.. autoapi-nested-parse::
+
+   module CompositeClassifier
+
+   Module created in an effort to simplify the structure of the code.
+   Work in progress. (Currently not used)
+
+   Class:
+       CompositeClassifier: Classifier composed of several complementary
+       subclassifiers.
+
+   ..todo:: use composite classifier for all case (would match ensemble classifier)
+   ..todo:: Move in a suitable package
+
+   :Authors: Nathan Ramoly
+
+
+
+Module Contents
+---------------
+
+.. py:class:: CompositeClassifier(models=[])
+
+   Bases: :class:`sklearn.base.BaseEstimator`, :class:`sklearn.base.ClassifierMixin`
+
+   class CompositeClassifier
+   aka Reduced Ensemble Classifier
+
+   Classifier composed of several complementary subclassifiers.
+   This classifier is typically a multiclass classifier decomposed in binary
+   subclassifiers.
+   Classification is then agregated with all detected class.
+   For now, agregation is only working for binary subclassifier.
+
+   .. method:: fit(self, X, y=None)
+
+
+      fit method
+      Train all subclassifiers.
+
+
+   .. method:: predict(self, X, y=None)
+
+
+      predict method
+      Evaluate X from all classifier.
+
+      :return: Classification for each value in X.
+
+
+   .. method:: _aggregateY(self, ys, X)
+
+
+      Return result per X (on array per value in X) from arrays per 
+      subclassifier.
+
+
+   .. method:: score(self, X, y=None)
+
+
+      score method
+      ..todo:
+
+
+

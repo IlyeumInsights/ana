@@ -1,0 +1,18 @@
+Reference
+=========
+
+ANA is developped in Python.
+The code is divided into five packages.
+Global parameters are set in the *Setting.py* file.
+The code follows the *camelCase* format for variables, classes and functions,
+and *PascalCase* for modules.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents:
+
+   knowledge
+   preparation
+   training
+   evaluation
+   utils

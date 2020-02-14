@@ -1,0 +1,19 @@
+:mod:`application.mod_ocr`
+==========================
+
+.. py:module:: application.mod_ocr
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   contractModel/index.rst
+   controllers/index.rst
+   fileModel/index.rst
+   services/index.rst
+   utils/index.rst
+
+

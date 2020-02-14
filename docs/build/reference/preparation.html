@@ -1,0 +1,1031 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preparation Package &mdash; ANA 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Training Package" href="training.html" />
+    <link rel="prev" title="Knowledge Package" href="knowledge.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ANA
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../process.html">ANA Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code.html">Project Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="knowledge.html">Knowledge Package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preparation Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-datacleaning">Module DataCleaning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datapreparation">Module DataPreparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-dataselection">Module DataSelection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-textgeneticoversampler">Module TextGeneticOversampler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="training.html">Training Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluation Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils Package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ANA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Reference</a> &raquo;</li>
+        
+      <li>Preparation Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/preparation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ana.preparation.DataCleaning">
+<span id="preparation-package"></span><h1>Preparation Package<a class="headerlink" href="#module-ana.preparation.DataCleaning" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-datacleaning">
+<h2>Module DataCleaning<a class="headerlink" href="#module-datacleaning" title="Permalink to this headline">¶</a></h2>
+<p>Carries functions dedicated to data cleaning or text management.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Authors</dt>
+<dd class="field-odd"><p>Nathan Ramoly</p>
+</dd>
+</dl>
+<dl class="function">
+<dt id="ana.preparation.DataCleaning.clean">
+<code class="sig-prename descclassname">ana.preparation.DataCleaning.</code><code class="sig-name descname">clean</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataCleaning.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the actual cleaning: normalize, merge lines and filter short words.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Text to clean.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Clean text.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataCleaning.filterText">
+<code class="sig-prename descclassname">ana.preparation.DataCleaning.</code><code class="sig-name descname">filterText</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">threshold=3</em>, <em class="sig-param">numbers=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataCleaning.filterText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove short (size &lt;= threshold) words that are irrelevant in analysis.
+Numbers be ignored by the filter.
+Performs this task by decomposing the text as a list of words and calling
+‘filterWords’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – Text to filter.</p></li>
+<li><p><strong>threshold</strong> (<em>int</em>) – Words shorter than the threshold are to be filtered.</p></li>
+<li><p><strong>numbers</strong> (<em>int</em>) – Assert if numbers should be filtered. (True if numbers are
+not filtered). True by default.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Filtered text.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataCleaning.filterWords">
+<code class="sig-prename descclassname">ana.preparation.DataCleaning.</code><code class="sig-name descname">filterWords</code><span class="sig-paren">(</span><em class="sig-param">tokens</em>, <em class="sig-param">threshold=3</em>, <em class="sig-param">numbers=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataCleaning.filterWords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove short (size &lt;= threshold) words that are irrelevant in analysis.
+Numbers be ignored by the filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tokens</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – List of words.</p></li>
+<li><p><strong>threshold</strong> (<em>int</em>) – Words shorter than the threshold are to be filtered.</p></li>
+<li><p><strong>numbers</strong> (<em>int</em>) – Assert if numbers should be filtered. (True if numbers are
+not filtered). True by default.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Filtered list of words.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataCleaning.mergeTextLines">
+<code class="sig-prename descclassname">ana.preparation.DataCleaning.</code><code class="sig-name descname">mergeTextLines</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataCleaning.mergeTextLines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove line breaks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Text with line breaks.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Text without line breaks.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataCleaning.normalizeText">
+<code class="sig-prename descclassname">ana.preparation.DataCleaning.</code><code class="sig-name descname">normalizeText</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataCleaning.normalizeText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes raw text by removing accents and special characters, lowering the
+text and removing trailing spaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Text to normalize.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Normalized text.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<span class="target" id="module-ana.preparation.DataPreparation"></span><div class="section" id="module-datapreparation">
+<h2>Module DataPreparation<a class="headerlink" href="#module-datapreparation" title="Permalink to this headline">¶</a></h2>
+<p>Provides function to Clean, Transform and Format data in preparation for the ML.</p>
+<dl class="simple">
+<dt>Functions:</dt><dd><dl class="simple">
+<dt>loadDataset</dt><dd><p>Loads the raw data from a directory.</p>
+</dd>
+<dt>transform</dt><dd><p>Transforms texts into features thanks to textual feature extraction
+technique including bow (tf-idf, count, hashing) and Doc2Dev.</p>
+</dd>
+<dt>prepareData</dt><dd><p>Load dataset and extract features to prepare data for ML.</p>
+</dd>
+<dt>prepareDataIly</dt><dd><p>Same as prepareData, but specifically on Ilyeum contract dataset.</p>
+</dd>
+<dt>preparationReport</dt><dd><p>Provides a textual report of the complete preparation process.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Authors</dt>
+<dd class="field-odd"><p>Nathan Ramoly</p>
+</dd>
+</dl>
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.classFilter">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">classFilter</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">classes</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.classFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter the dataset with only selected classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>dict</em><em>(</em><em>int</em><em>, </em><em>str</em><em>)</em>) – Segments of text to filter.</p></li>
+<li><p><strong>labels</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>str</em><em>)</em>) – Dictionnary of raw annotation to convert per segment id.</p></li>
+<li><p><strong>classes</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – List of all accepted class.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Filtered set of segments of text.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(int, str)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Filtered labels.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.cleanSegments">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">cleanSegments</code><span class="sig-paren">(</span><em class="sig-param">segments</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.cleanSegments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean all segments using the DataCleaning module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>segments</strong> (<em>dict</em><em>(</em><em>int</em><em>, </em><em>str</em><em>)</em>) – Raw segments of text.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Clean segments.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(int, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.convertLabels">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">convertLabels</code><span class="sig-paren">(</span><em class="sig-param">labels</em>, <em class="sig-param">classes</em>, <em class="sig-param">binary=False</em>, <em class="sig-param">refClass=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.convertLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the string label to numerical one.
+Binary = if different than one class
+refClass = list of reference classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>str</em><em>)</em>) – Dictionnary of raw annotation to convert per segment id.</p></li>
+<li><p><strong>classes</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – List of all known classes in the domain.</p></li>
+<li><p><strong>Binary</strong> (<em>bool</em>) – Convert label into 1 and 0 values, 1 meaning the label
+matches the reference class, 0 otherwise. The reference classes are provided
+or, by default, is the first class in the ‘classes’ array.</p></li>
+<li><p><strong>refClass</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – Reference classes that are to be converted, while the
+other ones are ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of label/class as numerical values.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, int)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Mapping between textual and numerical labels.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.debug_tsne_plot">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">debug_tsne_plot</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.debug_tsne_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and TSNE model and plots it.
+Used for deub/experiments.
+From <a class="reference external" href="https://www.kaggle.com/jeffd23/visualizing-word-vectors-with-t-sne">https://www.kaggle.com/jeffd23/visualizing-word-vectors-with-t-sne</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.display_scores">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">display_scores</code><span class="sig-paren">(</span><em class="sig-param">vectorizer</em>, <em class="sig-param">tfidf_result</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.display_scores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Debug function.
+<a class="reference external" href="http://stackoverflow.com/questions/16078015/">http://stackoverflow.com/questions/16078015/</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.loadDataset">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">loadDataset</code><span class="sig-paren">(</span><em class="sig-param">datadir='C:\\Users\\Nara\\Workspace\\datasets\\Contrats\\datasetSentence2'</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.loadDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates two dictionnaries describing segments from a directory of a
+dataset containing raw data and annotation.
+.. todo:: Handle default directory pass.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>datadir</strong> – directory of the dataset to load.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Dictionnary associating segment to text (segId, text)</p></li>
+<li><p>Dictionnary associating segment to label/annotation (segId, label)</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(int, str), dict(int, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.oversampling">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">oversampling</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em>, <em class="sig-param">random=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.oversampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Oversample datasets (already transformed)
+The resulting size of each class set is almost equal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>np.array</em>) – Data to oversample.</p></li>
+<li><p><strong>Y</strong> (<em>np.array</em>) – Labels associated to the data.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.preparationReport">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">preparationReport</code><span class="sig-paren">(</span><em class="sig-param">labelType</em>, <em class="sig-param">labelLevel</em>, <em class="sig-param">granularity</em>, <em class="sig-param">filter</em>, <em class="sig-param">labelBinary</em>, <em class="sig-param">labelClasses</em>, <em class="sig-param">oversample</em>, <em class="sig-param">datasetFolder</em>, <em class="sig-param">classes</em>, <em class="sig-param">labels</em>, <em class="sig-param">x_train</em>, <em class="sig-param">x_test</em>, <em class="sig-param">y_train</em>, <em class="sig-param">y_test</em>, <em class="sig-param">mapping</em>, <em class="sig-param">transformer</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.preparationReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a string report of the data preparation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Report of preparation of data.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.prepareData">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">prepareData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.prepareData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load, clean and transform a dataset from a fixed location
+It povides the data and annotation ready to be processed my ML tools.
+Not used anaymore.
+.. todo:: Perform data load from a database and a selected domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of data of training (x_train)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of label of training (y_train)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of data of testing (x_test)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of label of testing (y_test)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.prepareDataIly">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">prepareDataIly</code><span class="sig-paren">(</span><em class="sig-param">labelType, labelLevel, granularity=0, filter=[[[], [], []], [[], []]], labelBinary=False, labelClasses=None, oversample=False, transformer='count', datasetFolder='C:\\Users\\Nara\\Workspace\\datasets\\Contrats\\datasetSentence2', trasnformSerial='.\\models\\vectorizer.pickle', mappingExport=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.prepareDataIly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load, clean and transform Ilyeum contract dataset?
+It povides the data and annotation ready to be processed my ML tools.
+.. todo:: Perform data load from a database and a selected domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of data of training (x_train)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of label of training (y_train)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of data of testing (x_test)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of label of testing (y_test)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.transform">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">transformer='count'</em>, <em class="sig-param">oversample=False</em>, <em class="sig-param">trasnformSerial='.\\models\\vectorizer.pickle'</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform a set of textual segments into features.
+It offer multiple feature extraction techniques and can oversample the
+data set classicaly or geneticaly (see TextGeneticOversampler module).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – Raw segments of text.</p></li>
+<li><p><strong>labels</strong> – List of raw annotation associated to each segment.</p></li>
+<li><p><strong>transformer</strong> (<em>str</em>) – <ul>
+<li><p>‘count’ or ‘bow’ (default): standard BOW using sklearn.CountVectorizer.</p></li>
+<li><p>’tfidf’ or ‘tf-idf’: TF-IDF feature extraction through sklearn.TfidfVectorizer.</p></li>
+<li><p>’hash’:  Uses sklearn.HashingVectorizer</p></li>
+<li><p>’doc2vec’: DL doc2vec approach provided by Gensim.</p></li>
+</ul>
+</p></li>
+<li><p><strong>oversample</strong> (<em>bool</em>) – Assert if oversample should be performed or not.</p></li>
+<li><p><strong>trasnformSerial</strong> (<em>str</em><em> (</em><em>filepath</em><em>)</em>) – Transform process export path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Set of data of training (x_train)</p></li>
+<li><p>Set of label of training (y_train)</p></li>
+<li><p>Set of data of testing (x_test)</p></li>
+<li><p>Set of label of testing (y_test)</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.transformBOW">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">transformBOW</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">segments_test=None</em>, <em class="sig-param">labels_test=None</em>, <em class="sig-param">serialPath='.\\models\\vectorizer.pickle'</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.transformBOW" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply feature extraction with sklearn.CountVectorizer.
+It relies on char_wb and an ngram range of [4,5].
+.. todo:: Adapt parameter in the AutoML process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>np.array</em>) – Raw segments of text.</p></li>
+<li><p><strong>labels</strong> (<em>np.array</em>) – List of raw annotation associated to each segment.</p></li>
+<li><p><strong>serialPath</strong> (<em>str</em><em> (</em><em>filepath</em><em>)</em>) – Transform process export path.</p></li>
+<li><p><strong>segments_test</strong> (<em>np.array</em>) – Test segments to transform.</p></li>
+<li><p><strong>labels_test</strong> (<em>np.array</em>) – List of labels on the test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Set of data of training (x_train)</p></li>
+<li><p>Set of label of training (y_train)</p></li>
+<li><p>Set of data of testing (x_test)</p></li>
+<li><p>Set of label of testing (y_test)</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.transformDoc2Vec">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">transformDoc2Vec</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">segments_test=None</em>, <em class="sig-param">labels_test=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.transformDoc2Vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply feature extraction with gensim.Doc2Vec.
+Be aware that this process is heavy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>np.array</em>) – Raw segments of text.</p></li>
+<li><p><strong>labels</strong> (<em>np.array</em>) – List of raw annotation associated to each segment.</p></li>
+<li><p><strong>segments_test</strong> (<em>np.array</em>) – Test segments to transform.</p></li>
+<li><p><strong>labels_test</strong> (<em>np.array</em>) – List of labels on the test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Set of data of training (x_train)</p></li>
+<li><p>Set of label of training (y_train)</p></li>
+<li><p>Set of data of testing (x_test)</p></li>
+<li><p>Set of label of testing (y_test)</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.transformHashing">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">transformHashing</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">segments_test=None</em>, <em class="sig-param">labels_test=None</em>, <em class="sig-param">serialPath='.\\models\\vectorizer.pickle'</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.transformHashing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply feature extraction with sklearn.HashingVectorizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>np.array</em>) – Raw segments of text.</p></li>
+<li><p><strong>labels</strong> (<em>np.array</em>) – List of raw annotation associated to each segment.</p></li>
+<li><p><strong>serialPath</strong> (<em>str</em><em> (</em><em>filepath</em><em>)</em>) – Transform process export path.</p></li>
+<li><p><strong>segments_test</strong> (<em>np.array</em>) – Test segments to transform.</p></li>
+<li><p><strong>labels_test</strong> (<em>np.array</em>) – List of labels on the test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Set of data of training (x_train)</p></li>
+<li><p>Set of label of training (y_train)</p></li>
+<li><p>Set of data of testing (x_test)</p></li>
+<li><p>Set of label of testing (y_test)</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataPreparation.transformTFIDF">
+<code class="sig-prename descclassname">ana.preparation.DataPreparation.</code><code class="sig-name descname">transformTFIDF</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">segments_test=None</em>, <em class="sig-param">labels_test=None</em>, <em class="sig-param">serialPath='.\\models\\vectorizer.pickle'</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataPreparation.transformTFIDF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply feature extraction with sklearn.TfidfVectorizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>np.array</em>) – Raw segments of text.</p></li>
+<li><p><strong>labels</strong> (<em>np.array</em>) – List of raw annotation associated to each segment.</p></li>
+<li><p><strong>serialPath</strong> (<em>str</em><em> (</em><em>filepath</em><em>)</em>) – Transform process export path.</p></li>
+<li><p><strong>segments_test</strong> (<em>np.array</em>) – Test segments to transform.</p></li>
+<li><p><strong>labels_test</strong> (<em>np.array</em>) – List of labels on the test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Set of data of training (x_train)</p></li>
+<li><p>Set of label of training (y_train)</p></li>
+<li><p>Set of data of testing (x_test)</p></li>
+<li><p>Set of label of testing (y_test)</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<span class="target" id="module-ana.preparation.DataSelection"></span><div class="section" id="module-dataselection">
+<h2>Module DataSelection<a class="headerlink" href="#module-dataselection" title="Permalink to this headline">¶</a></h2>
+<p>Module in charge of selecting data according to the different level of
+annotation (labels) based on a filter based query.
+It allows to select data of a particular type or anomalies.
+It also aggregates lower granules (sentences) to bigger one (clause).</p>
+<dl class="simple">
+<dt>Functions</dt><dd><dl class="simple">
+<dt>loadData</dt><dd><p>Load the text data from a dataset location.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Authors</dt>
+<dd class="field-odd"><p>Nathan Ramoly</p>
+</dd>
+</dl>
+<dl class="function">
+<dt id="ana.preparation.DataSelection.filterLabels">
+<code class="sig-prename descclassname">ana.preparation.DataSelection.</code><code class="sig-name descname">filterLabels</code><span class="sig-paren">(</span><em class="sig-param">labels</em>, <em class="sig-param">selections</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataSelection.filterLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects labels according to this template:
+[ [ [classesA_co1], [classesA_co2] ], [ [classesB_co1], [classesB_co2] ] ]
+(See loadData explication for filter)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>list</em><em>(</em><em>dict</em><em>(</em><em>str</em><em>, </em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – List of labels decomposed by granularity and dimensions.</p></li>
+<li><p><strong>selections</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – Filter query.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The set of laabels matching the filter.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(dict(str, list(str))) (to check)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataSelection.loadData">
+<code class="sig-prename descclassname">ana.preparation.DataSelection.</code><code class="sig-name descname">loadData</code><span class="sig-paren">(</span><em class="sig-param">colY, filter=[[[], [], []], [[], []]], granularity=0, datasetFolder='C:\\Users\\Nara\\Workspace\\datasets\\Contrats\\datasetSentence2'</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataSelection.loadData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read and load a dataset folder that contains annotation files (csv) and
+a subdirectories with the raw texts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colY</strong> (<em>list</em><em>(</em><em>(</em><em>int</em><em>, </em><em>int</em><em>)</em><em>)</em>) – The column that should be used for classification (the labels
+or Y) as: [granularity, column] both as int (pos)</p></li>
+<li><p><strong>filter</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – The list, for each granularity level and each column, of
+accepted classes (if empty, all class are accepted) granularity is the
+granulirity that is to be considered (0 highest, ex: clause), if the colY
+is from a higher granularity, annotation are propagated to children.</p></li>
+<li><p><strong>granularity</strong> (<em>int</em>) – Granulirty level used for loading (sentence, clause…),
+default: 0. Is the higher level, other values are deeper/smaller text
+decomposition.</p></li>
+<li><p><strong>datasetFolder</strong> (<em>str</em><em> (</em><em>dirPath</em><em>)</em>) – Location of the dataset directory.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The set of values/texts (X).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The set of associated label (Y).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataSelection.loadLabels">
+<code class="sig-prename descclassname">ana.preparation.DataSelection.</code><code class="sig-name descname">loadLabels</code><span class="sig-paren">(</span><em class="sig-param">datasetFolder</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataSelection.loadLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loard the labels with the following format:
+Format [dictA, dictB, dictC, …]
+Granule level: …C in B in A
+Ids: idA, idA_idB, idA_idB_idC
+dict: {id, [col]}</p>
+<p>For now, it uses default annotatrion csv files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>datasetFolder</strong> (<em>str</em><em> (</em><em>dirPath</em><em>)</em>) – Location of the dataset directory.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of labels decomposed by granularity and dimensions (class
+domain).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(dict(str, list(str)))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataSelection.loadText">
+<code class="sig-prename descclassname">ana.preparation.DataSelection.</code><code class="sig-name descname">loadText</code><span class="sig-paren">(</span><em class="sig-param">datasetFolder</em>, <em class="sig-param">labels</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataSelection.loadText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the raw text according to the selected labels through their ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>datasetFolder</strong> (<em>str</em><em> (</em><em>dirPath</em><em>)</em>) – Location of the dataset directory.</p></li>
+<li><p><strong>labels</strong> (<em>list</em><em>(</em><em>dict</em><em>(</em><em>str</em><em>, </em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – List of labels per id.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Selected raw text</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataSelection.mergeGranule">
+<code class="sig-prename descclassname">ana.preparation.DataSelection.</code><code class="sig-name descname">mergeGranule</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataSelection.mergeGranule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges granules to the upper level.
+For now, only for higher level (clause).
+Example: sentences to clause</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>str</em><em>)</em>) – Textual subgranules.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Text for upper level granule.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataSelection.recursiveSelect">
+<code class="sig-prename descclassname">ana.preparation.DataSelection.</code><code class="sig-name descname">recursiveSelect</code><span class="sig-paren">(</span><em class="sig-param">labels</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataSelection.recursiveSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter labels of child granules recurisvely</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>labels</strong> (<em>list</em><em>(</em><em>dict</em><em>(</em><em>str</em><em>, </em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – List of labels decomposed by granularity and dimensions.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>filtered label</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataSelection.selectLabel">
+<code class="sig-prename descclassname">ana.preparation.DataSelection.</code><code class="sig-name descname">selectLabel</code><span class="sig-paren">(</span><em class="sig-param">label</em>, <em class="sig-param">selection</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataSelection.selectLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply selection on a single label list, that is the labels for one entry
+for each dimension/domain and granularity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em>) – Labels for one entry/segment.</p></li>
+<li><p><strong>selections</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – Filter query.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Label that fits the filter query</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, list(str)) (to check)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.preparation.DataSelection.selectLearningClass">
+<code class="sig-prename descclassname">ana.preparation.DataSelection.</code><code class="sig-name descname">selectLearningClass</code><span class="sig-paren">(</span><em class="sig-param">colY</em>, <em class="sig-param">granularity</em>, <em class="sig-param">data</em>, <em class="sig-param">labels</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.DataSelection.selectLearningClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine X and Y
+.. todo:: diff granularity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colY</strong> (<em>list</em><em>(</em><em>(</em><em>int</em><em>, </em><em>int</em><em>)</em><em>)</em>) – The column that should be used for classification (the labels
+or Y) as: [granularity, column] both as int (pos)</p></li>
+<li><p><strong>granularity</strong> (<em>int</em>) – Granulirty level used for loading (sentence, clause…).</p></li>
+<li><p><strong>data</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>str</em><em>)</em>) – Textual granules.</p></li>
+<li><p><strong>labels</strong> (<em>list</em><em>(</em><em>dict</em><em>(</em><em>str</em><em>, </em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – List of labels per id.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The set of values/texts (X).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The set of associated label (Y).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<span class="target" id="module-ana.preparation.TextGeneticOversampler"></span><div class="section" id="module-textgeneticoversampler">
+<h2>Module TextGeneticOversampler<a class="headerlink" href="#module-textgeneticoversampler" title="Permalink to this headline">¶</a></h2>
+<p>Provide a class that enrich a text dataset by exchanging parts between two
+texts, as perform in chromosomes before mitosis.</p>
+<dl class="simple">
+<dt>Class</dt><dd><p>TextGeneticOversampler</p>
+</dd>
+</dl>
+<dl class="class">
+<dt id="ana.preparation.TextGeneticOversampler.TextGeneticOversampler">
+<em class="property">class </em><code class="sig-prename descclassname">ana.preparation.TextGeneticOversampler.</code><code class="sig-name descname">TextGeneticOversampler</code><span class="sig-paren">(</span><em class="sig-param">generation=1</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.TextGeneticOversampler.TextGeneticOversampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>class TextGeneticOversampler</p>
+<p>Oversamples text samples by generating new sentences by genetic-like merge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>generation</strong> (<em>int</em>) – Number of exchange process to apply.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="ana.preparation.TextGeneticOversampler.TextGeneticOversampler.fit_resample">
+<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.TextGeneticOversampler.TextGeneticOversampler.fit_resample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the actual overfitting by generating new samples/sentences by
+by genetic combination per class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>np.array</em>) – Text samples.</p></li>
+<li><p><strong>Y</strong> (<em>np.array</em>) – Annotation for each text of X</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Oversampled text samples set.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Oversampled text annotation.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ana.preparation.TextGeneticOversampler.TextGeneticOversampler.geneticTextMerge">
+<code class="sig-name descname">geneticTextMerge</code><span class="sig-paren">(</span><em class="sig-param">textA</em>, <em class="sig-param">textB</em>, <em class="sig-param">ordered=False</em>, <em class="sig-param">nbPack=0</em>, <em class="sig-param">mutaRate=0.25</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.TextGeneticOversampler.TextGeneticOversampler.geneticTextMerge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exchanges packs (subtext) of two sentences/texts, thus generating
+variation of both texts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>textA</strong> (<em>str</em>) – First text.</p></li>
+<li><p><strong>textB</strong> (<em>str</em>) – Second text.</p></li>
+<li><p><strong>ordered</strong> (<em>bool</em><em>, </em><em>optional</em>) – assert if pack/word should be kept in initial order,
+defaults to False</p></li>
+<li><p><strong>nbPack</strong> (<em>int</em><em>, </em><em>optional</em>) – number of text parts that will be exchanged,
+defaults to 0</p></li>
+<li><p><strong>mutaRate</strong> (<em>float</em><em>, </em><em>optional</em>) – Mutation rate that represents the rate of exchanged
+parts in the texts, defaults to 0.25</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>First mutated text.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Second mutated text.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ana.preparation.TextGeneticOversampler.TextGeneticOversampler.packText">
+<code class="sig-name descname">packText</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">nbPack</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.preparation.TextGeneticOversampler.TextGeneticOversampler.packText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms a text as a set of pack of words.
+By default, create packs containing one word each.
+Packs the granule that are used to create further sentences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – Text to decompose as a set of pack.</p></li>
+<li><p><strong>nbPack</strong> (<em>int</em>) – Number of expected packs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A set of pack of words.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(list(str))</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="training.html" class="btn btn-neutral float-right" title="Training Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="knowledge.html" class="btn btn-neutral float-left" title="Knowledge Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Iyeum
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

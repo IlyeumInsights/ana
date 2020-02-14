@@ -1,0 +1,33 @@
+:mod:`DatasetBuilder`
+=====================
+
+.. py:module:: DatasetBuilder
+
+.. autoapi-nested-parse::
+
+   Aggregate and transform data of annotated contracts.
+   It (may) also perform the preparation/Cleaning of data. (Or separate ?)
+
+
+
+Module Contents
+---------------
+
+.. function:: aggregateData(pathDir)
+
+   Go through directories that each matchs a document and contains a dataset
+   zip file.
+   The content of the zip file is extracted and aggregated in a single dir.
+
+
+.. function:: extractSubDataset(datasetPath, firstLineOnly=False)
+
+   Extract all clauses from a given type (vocabulary)
+   Work from extracted data set
+
+
+.. function:: convertFilesToUTF8(directory)
+
+   Convert all file of a directory from ANSI to UTF-8 (if not UTF-8)
+
+

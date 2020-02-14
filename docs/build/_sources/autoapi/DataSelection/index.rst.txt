@@ -1,0 +1,177 @@
+:mod:`DataSelection`
+====================
+
+.. py:module:: DataSelection
+
+.. autoapi-nested-parse::
+
+   module DataSelection
+
+   Module in charge of selecting data according to the different level of
+   annotation (labels) based on a filter based query.
+   It allows to select data of a particular type or anomalies.
+   It also aggregates lower granules (sentences) to bigger one (clause).
+
+   Functions
+       loadData
+           Load the text data from a dataset location.
+
+
+   :Authors: Nathan Ramoly
+
+
+
+Module Contents
+---------------
+
+.. function:: loadData(colY, filter=[[[], [], []], [[], []]], granularity=0, datasetFolder='C:\\Users\\Nara\\Workspace\\datasets\\Contrats\\datasetSentence')
+
+   loadData
+
+   Read and load a dataset folder that contains annotation files (csv) and
+   a subdirectories with the raw texts.
+
+   :param colY: The column that should be used for classification (the labels
+   or Y) as: [granularity, column] both as int (pos)
+   :type colY: list((int, int))
+   :param filter: The list, for each granularity level and each column, of
+   accepted classes (if empty, all class are accepted) granularity is the
+   granulirity that is to be considered (0 highest, ex: clause), if the colY
+   is from a higher granularity, annotation are propagated to children.
+   :type filter: list(list(list(str)))
+   :param granularity: Granulirty level used for loading (sentence, clause...),
+   default: 0. Is the higher level, other values are deeper/smaller text 
+   decomposition.
+   :type granularity: int
+   :param datasetFolder: Location of the dataset directory.
+   :type datasetFolder: str (dirPath)
+
+   :return: The set of values/texts (X).
+   :rtype: dict(str, str)
+   :return: The set of associated label (Y).
+   :rtype: dict(str, str)
+
+
+.. function:: loadLabels(datasetFolder)
+
+   loadLabels
+
+   Loard the labels with the following format:
+   Format [dictA, dictB, dictC, ...]
+   Granule level: ...C in B in A
+   Ids: idA, idA_idB, idA_idB_idC
+   dict: {id, [col]}
+
+   For now, it uses default annotatrion csv files.
+
+   :param datasetFolder: Location of the dataset directory.
+   :type datasetFolder: str (dirPath)
+
+   :return: List of labels decomposed by granularity and dimensions (class
+   domain).
+   :rtype: list(dict(str, list(str)))
+
+
+.. function:: filterLabels(labels, selections)
+
+   filterLabels
+
+   Selects labels according to this template:
+   [ [ [classesA_co1], [classesA_co2] ], [ [classesB_co1], [classesB_co2] ] ]
+   (See loadData explication for filter)
+
+   :param labels: List of labels decomposed by granularity and dimensions.
+   :type labels: list(dict(str, list(str)))
+
+   :param selections: Filter query.
+   :type selections: list(list(list(str)))
+
+   :return: The set of laabels matching the filter.
+   :rtype: list(dict(str, list(str))) (to check)
+
+
+.. function:: selectLabel(label, selection)
+
+   selectLabel
+
+   Apply selection on a single label list, that is the labels for one entry
+   for each dimension/domain and granularity
+
+   :param label: Labels for one entry/segment.
+   :type label: dict(str, list(str))
+
+   :param selections: Filter query.
+   :type selections: list(list(list(str)))
+
+   :return: Label that fits the filter query
+   :rtype: dict(str, list(str)) (to check)
+
+
+.. function:: recursiveSelect(labels)
+
+   recursiveSelect
+
+   Filter labels of child granules recurisvely
+
+   :param labels: List of labels decomposed by granularity and dimensions.
+   :type labels: list(dict(str, list(str)))
+
+   :return: filtered label
+
+
+.. function:: loadText(datasetFolder, labels)
+
+   loadTest
+
+   Load the raw text according to the selected labels through their ids.
+
+   :param datasetFolder: Location of the dataset directory.
+   :type datasetFolder: str (dirPath)
+
+   :param labels: List of labels per id.
+   :type labels: list(dict(str, list(str)))
+
+   :return: Selected raw text
+   :rtype: dict(str, str)
+
+
+.. function:: mergeGranule(data)
+
+   mergeGranule
+
+   Merges granules to the upper level.
+   For now, only for higher level (clause).
+   Example: sentences to clause
+
+   :param data: Textual subgranules.
+   :type data: dict(str, str)
+
+   :return: Text for upper level granule.
+   :rtype: dict(str, str)
+
+
+.. function:: selectLearningClass(colY, granularity, data, labels)
+
+   selectLearningClass
+
+   Determine X and Y
+   TODO diff granularity level
+
+   :param colY: The column that should be used for classification (the labels
+   or Y) as: [granularity, column] both as int (pos)
+   :type colY: list((int, int))
+   :param granularity: Granulirty level used for loading (sentence, clause...).
+   :type granularity: int
+
+   :param data: Textual granules.
+   :type data: dict(str, str)
+
+   :param labels: List of labels per id.
+   :type labels: list(dict(str, list(str)))
+
+   :return: The set of values/texts (X).
+   :rtype: dict(str, str)
+   :return: The set of associated label (Y).
+   :rtype: dict(str, str)
+
+

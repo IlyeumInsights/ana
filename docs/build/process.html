@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ANA Process &mdash; ANA 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="prev" title="ANA: an AutoML-Based Negotiation Assistant" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ANA
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ANA Process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#training">Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluation">Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ANA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ANA Process</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/process.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ana-process">
+<h1>ANA Process<a class="headerlink" href="#ana-process" title="Permalink to this headline">¶</a></h1>
+<p>ANA aims to analyze contracts by providing feedbacks for each clause.
+Determining the acceptebility of a clause can be seen as both a text
+classification and an anomaly detection problem.
+To achieve this, ANA relies on a hierarchical composition of models trained
+through an AutoML process that extracts the best combination of classifiers.
+Hence, ANA is flexible and suitable to any domain <a class="footnote-reference brackets" href="#f1" id="id1">1</a>.</p>
+<p>As proven in previous works in the litterature, including
+Polisis <a class="bibtex reference internal" href="#harkous2018" id="id2">[HFL+18]</a> and Claudette <a class="bibtex reference internal" href="#lippi2019" id="id3">[LPC+19]</a>, using such a
+hierarchy enables specific, thus accurate, classifiers.
+Conseuqently, ANA was designed as a three steps process:</p>
+<ul class="simple">
+<li><p><strong>Type recognition</strong> (<span class="math notranslate nohighlight">\(\alpha\)</span>): Identifies the type of the clause, for
+instance: <em>billing</em>, <em>confidentiality</em> or <em>termination</em>.</p></li>
+<li><p><strong>Anomaly detection</strong> (<span class="math notranslate nohighlight">\(\beta\)</span>): According to the type of the clause,
+determines if the clause is acceptable toward the current policies.</p></li>
+<li><p><strong>Anomaly identification</strong> (<span class="math notranslate nohighlight">\(\gamma\)</span>): If the clause is detected as
+anomalous, identifies the violated policies.</p></li>
+</ul>
+<p>For each phase, ANA trains and uses <em>ensemble classifiers</em>.
+An <em>ensemble classifier</em> is a set of sub-classifier whose results
+are aggregated into as single one through an aggragation function,
+typically a voting procedure. Each sub-classifier focuses on a restricted
+set of data, features or class. The principle of <em>ensemble classifiers</em> is to
+use a set of parallel specific classifiers, typically, a multi-class classifier
+can be decomposed as a set of binary classifiers.
+This enables a more accurate classification <a class="bibtex reference internal" href="#lippi2019" id="id4">[LPC+19]</a>.</p>
+<p>To set those ensemble classifiers, ANA relies of an AutoML process, that not
+only determines the best classifier configuration, but also the best
+combination of sub-classifiers (within ensemble classifiers).
+In the end, ANA uses a hierarchy (<span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span> et
+<span class="math notranslate nohighlight">\(\gamma\)</span>) of set of sub-classifers (<em>ensemble classifier</em>).</p>
+<div class="section" id="training">
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/archi_automl.jpg"><img alt="_images/archi_automl.jpg" src="_images/archi_automl.jpg" style="width: 600px;" /></a>
+<p>The training process aim to generate the evaluation pipeline from a set
+of examples. As input, it relies on clauses annotated per type and anomalies
+(and per granularity), as well as a set of policies, formalised as SWRL rules.
+Both are supposed provided by  a business expert.
+Examples clauses are divided into a training set and testing set.</p>
+<p>Based on these data, ANA uses it AutoML process to instantiate, evaluate and
+select combinations of ML pipelines with various configurations.
+Pipelines are instantiated from a core pipeline template. A pipeline has
+the following configurable steps:</p>
+<ul class="simple">
+<li><p><strong>Restriction (RES)</strong>: Selection of a subset of training data from their
+labels.</p></li>
+<li><p><strong>Granularity (GRA)</strong>: Granularity considered (typically
+full clause or sentences).</p></li>
+<li><p><strong>Feature Extraction (FEX)</strong>: Textual feature extraction to use (count
+vectorizer, hashing vectorizer, tf-idf or doc2vec).</p></li>
+<li><p><strong>Model and Hyperparameter (MOD)</strong>: Selection and auto-configuration
+(with TPOT) of a ML model. SVM can be used by default for faster training.</p></li>
+<li><p><strong>Agregation (AGG)</strong>: Aggragation procedure for small granules (for example,
+if sentences were used, procedure to assemble them back to clause scale). It
+mostly uses election procedures.</p></li>
+</ul>
+<p>The AutoML process instantiates multiple pipelines at once and evaluates them
+on the test set. Results of each pipeline are aggregated and metrics are
+measured. The combination of pipeline that achieves the highest <em>f1_score</em>
+(other metrics can be seleced in the code) is selected. A corresponding ensemble
+classifier is created and saved.</p>
+<p>ANA’s AutoML process is applied to each phase <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span> and
+<span class="math notranslate nohighlight">\(\gamma\)</span> with minor specificities:
+Phase <span class="math notranslate nohighlight">\(\alpha\)</span>, that determines the type of the clause, mainly considers
+simple combinations with various granularities. One ensemble classifier is
+trained for <span class="math notranslate nohighlight">\(\alpha\)</span>.
+Phase <span class="math notranslate nohighlight">\(\beta\)</span> training is performed for each type of clause. Thus,
+training is perform on a reduced dataset. Several combinations, that include
+binary classifiers, are considered.
+Phase <span class="math notranslate nohighlight">\(\gamma\)</span> aims to classify the anomaly, and consiquently only uses
+anomalous clauses fro training. Again, training is performed for each type of
+clause and complex combinations are explored.
+Both <span class="math notranslate nohighlight">\(\beta\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span> are composed of multiples trained
+ensemble classifiers.</p>
+<p>The resulting ensemble classifiers can then be used for evaluating clauses of
+new contracts.</p>
+</div>
+<div class="section" id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/eval_automl.jpg"><img alt="_images/eval_automl.jpg" src="_images/eval_automl.jpg" style="width: 600px;" /></a>
+<p>A contract is provided as a set of clauses, ANA analyses each of them
+separately: the evaluation process uses <strong>a clause as input</strong>.</p>
+<p>The clause evaluation naturally follows the phases <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span>
+and <span class="math notranslate nohighlight">\(\gamma\)</span>.
+First, the clause type is determined by <span class="math notranslate nohighlight">\(\alpha\)</span> ensemble classifier.
+This classification can be refined with a key word search on the title of the
+clause.
+According to the inferred type, the matching ensemble classifier of
+<span class="math notranslate nohighlight">\(\beta\)</span> is selected and applied. This ensemble classifier assert the
+abnormality of the clause.
+Finally, if the clause is anomalous, i.e. unacceptable in its current state,
+the matching ensemble classifier of <span class="math notranslate nohighlight">\(\gamma\)</span> is selected and applied.
+This last classifier provides the violated policies.</p>
+<p>In this end, the evaluation process outputs the <strong>type</strong> of the clause, the
+<strong>acceptability</strong> of the clause, and the consequently <strong>violated policies</strong>.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-process-0"><dl class="citation">
+<dt class="bibtex label" id="harkous2018"><span class="brackets"><a class="fn-backref" href="#id2">HFL+18</a></span></dt>
+<dd><p>H. Harkous, K. Fawaz, R. Lebret, F Schaub, K.G. Shin, and K. Aberer. Polisis: automated analysis and presentation of privacy policies using deep learning. <em>27th USENIX Security Symposium, USENIX Security 2018, Baltimore, MD, USA.</em>, pages 531–548, August 2018.</p>
+</dd>
+<dt class="bibtex label" id="lippi2019"><span class="brackets">LPC+19</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>)</span></dt>
+<dd><p>M. Lippi, P. Palka, G Contissa, F. Lagioia, H.W. Micklitz, G. Sartor, and P. Torroni. Claudette: an automated detector of potentially unfair clauses in online terms of service. <em>Artificial Intelligence and Law</em>, 2019.</p>
+</dd>
+</dl>
+</p>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>This assertation remains to be evaluated.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="ANA: an AutoML-Based Negotiation Assistant" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Iyeum
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

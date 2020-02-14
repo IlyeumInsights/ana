@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PipelineTraining &mdash; Contract Analysis 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Contract Analysis
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Contract Analysis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">PipelineTraining</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/autoapi/PipelineTraining/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-PipelineTraining">
+<span id="pipelinetraining"></span><h1><a class="reference internal" href="#module-PipelineTraining" title="PipelineTraining"><code class="xref py py-mod docutils literal notranslate"><span class="pre">PipelineTraining</span></code></a><a class="headerlink" href="#module-PipelineTraining" title="Permalink to this headline">¶</a></h1>
+<p><p>module PipelineTraining</p>
+<p>Train several pipelines according to multiple provided configurations.
+That is to say that it trains a possible ensemble classifier.
+.. todo:: Use MLflow to track the model trained.</p>
+</p>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="PipelineTraining.generateClassifReport">
+<code class="sig-prename descclassname">PipelineTraining.</code><code class="sig-name descname">generateClassifReport</code><span class="sig-paren">(</span><em class="sig-param">y_test</em>, <em class="sig-param">y_pred</em><span class="sig-paren">)</span><a class="headerlink" href="#PipelineTraining.generateClassifReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>generateClassifReport</p>
+<p>Generate a report of the classifier performance based on its outputs and
+reference (test) labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_test</strong> (<em>np.array</em>) – Expected labels.</p></li>
+<li><p><strong>y_pred</strong> (<em>np.array</em>) – Predicted labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The human readable report.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="PipelineTraining.trainClassifier">
+<code class="sig-prename descclassname">PipelineTraining.</code><code class="sig-name descname">trainClassifier</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">path</em>, <em class="sig-param">classifierName</em>, <em class="sig-param">automl=False</em><span class="sig-paren">)</span><a class="headerlink" href="#PipelineTraining.trainClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>trainClassifier</p>
+<p>Trains a classifier for a single configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>list</em><em>(</em><em>any</em><em>)</em>) – Classifier configuration</p></li>
+<li><p><strong>path</strong> (<em>str</em><em> (</em><em>dirPath</em><em>)</em>) – Location of classifier export.</p></li>
+<li><p><strong>classifierName</strong> – Name of the classifier that will be used to name the</p></li>
+</ul>
+</dd>
+</dl>
+<p>exported file.
+:type classifierName: str
+:param automl: Assert if single model AutoML (TPOT) should be used,
+defaults to False.
+:type automl: bool, optional
+:return: The trained model
+:rtype: sklearn.model</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="PipelineTraining.trainPipeline">
+<code class="sig-prename descclassname">PipelineTraining.</code><code class="sig-name descname">trainPipeline</code><span class="sig-paren">(</span><em class="sig-param">configs</em>, <em class="sig-param">path</em>, <em class="sig-param">automl=True</em><span class="sig-paren">)</span><a class="headerlink" href="#PipelineTraining.trainPipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>trainPipeline</p>
+<p>Generate multiple classifier as part of the pipeline as well as voting
+procedure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>configs</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>any</em><em>)</em><em>)</em>) – Configurations of all subclassifiers</p></li>
+<li><p><strong>path</strong> (<em>str</em><em> (</em><em>dirPath</em><em>)</em>) – Destination for the export of models</p></li>
+<li><p><strong>automl</strong> (<em>bool</em><em>, </em><em>optional</em>) – Assert if AutoML should be used, defaults to True</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="PipelineTraining.evaluatePipeline">
+<code class="sig-prename descclassname">PipelineTraining.</code><code class="sig-name descname">evaluatePipeline</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">nbconf</em>, <em class="sig-param">config</em>, <em class="sig-param">voteSent=None</em>, <em class="sig-param">voteClause=None</em>, <em class="sig-param">voteMode=None</em><span class="sig-paren">)</span><a class="headerlink" href="#PipelineTraining.evaluatePipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>evaluatePipeline</p>
+<p>Evaluate the quality of classification of a pipeline by loading a part of
+the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> (</em><em>dirPath</em><em>)</em>) – Directory containing the models of the pipeline.</p></li>
+<li><p><strong>nbconf</strong> (<em>int</em>) – Number of configurations considered.</p></li>
+<li><p><strong>config</strong> (<em>list</em><em>(</em><em>any</em><em>)</em>) – Configurations, contraining information to load the dataset.</p></li>
+<li><p><strong>voteSent</strong> – Default election element at sentence level,</p></li>
+</ul>
+</dd>
+</dl>
+<p>defaults to None
+:type voteSent: str, optional
+:param voteClause: Default election element at clause level,
+defaults to None
+:type voteClause: str, optional
+:param voteMode: Type of election performed on clause (to aggregate
+outputs of models), defaults to None
+:type voteMode: str, optional</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Achieved f1_score</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Expected values</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Predicted values</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="PipelineTraining.evaluatePipelineDebug">
+<code class="sig-prename descclassname">PipelineTraining.</code><code class="sig-name descname">evaluatePipelineDebug</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">nbconf</em><span class="sig-paren">)</span><a class="headerlink" href="#PipelineTraining.evaluatePipelineDebug" title="Permalink to this definition">¶</a></dt>
+<dd><p>evaluatePipelineDebug</p>
+<p>Pipeline evaluation for ML conception and debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> (</em><em>dirPath</em><em>)</em>) – Directory containing the models of the pipeline.</p></li>
+<li><p><strong>nbconf</strong> (<em>int</em>) – Number of configurations considered.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Achieved f1_score</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="data">
+<dt id="PipelineTraining.configs">
+<code class="sig-prename descclassname">PipelineTraining.</code><code class="sig-name descname">configs</code><em class="property"> = []</em><a class="headerlink" href="#PipelineTraining.configs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Iyeum Lab
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

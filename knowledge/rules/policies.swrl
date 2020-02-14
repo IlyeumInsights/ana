@@ -1,0 +1,37 @@
+# Comment with #
+
+# Non_sollicitation #
+R2: is(?c, "clause") ^ type(?c, "non_sollicitation") ^ hasDuration(?c, ?d, ?u) ^ lessThan(?d, 12) ^ is(?u, "month") -> validity(?c, 0)
+
+# Negation needed
+R3: is(?c, "clause") ^ type(?c, "non_sollicitation") ^ hasSubject(?c, ?s1) ^ hasSubject(?c, ?s2) ^ is(?s1, "client") ^ is(?s2, "partenaire") -> validity(?c, 01)
+
+# Anomaly on value being false rather than being there or not
+R4: is(?c, "clause") ^ type(?c, "non_sollicitation") ^ has(?c, ?ind) ^ hasDuration(?ind, ?d, ?u) ^ lessThan(?d, 12) ^ is(?u, "month") -> validity(?c, 0)
+
+# Valid in close world assumption
+R5: is(?c, "clause") ^ type(?c, "non_sollicitation") ^ hasSubject(?c, ?s1) ^ is(?s1, "fournisseur") ^ hasSubject(?c, ?s2) ^ is(?s2, "client") -> validity(?c, 1)
+
+
+# Resilitiation #
+R7: is(?c, "clause") ^ type(?c, "resiliation") ^ hasDuration(?c, ?d, ?u) ^ lessThan(?d, 30) ^ is(?u, "days") -> validity(?c, 0)
+R7: is(?c, "clause") ^ type(?c, "resiliation") ^ hasDuration(?c, ?d, ?u) ^ greaterThan(?d, 60) ^ is(?u, "days") -> validity(?c, 0)
+
+# Valid in close world assumption
+R8: is(?c, "clause") ^ type(?c, "resiliation") ^ hasSubject(?c, ?s1) ^ is(?s1, "fournisseur") ^ hasSubject(?c, ?s2) ^ is(?s2, "client") -> validity(?c, 1)
+
+R9: is(?c, "clause") ^ type(?c, "resiliation") ^ notContains(?c, "preavis") -> validity(?c, 0)
+
+#R10 non existing
+
+
+# Paiement #
+R11: is(?c, "clause") ^ type(?c, "paiement") ^ contains(?c, "cheque") -> validity(?c, 0)
+R11: is(?c, "clause") ^ type(?c, "paiement") ^ notContains(?c, "virement") -> validity(?c, 0)
+
+R12: is(?c, "clause") ^ type(?c, "paiement") ^ hasDuration(?c, ?d, ?u) ^ greaterThan(?d, 45) ^ is(?u, "days") -> validity(?c, 0)
+
+
+# Non concurence #
+R15: is(?c, "clause") ^ type(?c, "non_concurrence") ^ hasDuration(?c, ?d, ?u) ^ greaterThan(?d, 12) ^ is(?u, "month") -> validity(?c, 0)
+#R16 too limited

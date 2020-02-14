@@ -1,0 +1,102 @@
+:mod:`TextGeneticOversampler`
+=============================
+
+.. py:module:: TextGeneticOversampler
+
+.. autoapi-nested-parse::
+
+   module TextGeneticOversampler
+
+   Provide a class that enrich a text dataset by exchanging parts between two
+   texts, as perform in chromosomes before mitosis.
+
+   Class
+       TextGeneticOversampler
+
+
+
+Module Contents
+---------------
+
+.. py:class:: TextGeneticOversampler(generation=1)
+
+   class TextGeneticOversampler
+
+   Oversamples text samples by generating new sentences by genetic-like merge.
+
+   :param generation: Number of exchange process to apply.
+   :type generation: int
+
+   .. attribute:: generation
+      :annotation: = 1
+
+      
+
+   .. method:: packText(self, text, nbPack)
+
+
+      packText
+
+      Transforms a text as a set of pack of words.
+      By default, create packs containing one word each.
+      Packs the granule that are used to create further sentences.
+
+      :param text: Text to decompose as a set of pack.
+      :type text: str
+      :param nbPack: Number of expected packs.
+      :type nbPack: int
+      :return: A set of pack of words.
+      :rtype: list(list(str))
+
+
+   .. method:: geneticTextMerge(self, textA, textB, ordered=False, nbPack=0, mutaRate=0.25)
+
+
+      geneticTextMerge
+
+      Exchanges packs (subtext) of two sentences/texts, thus generating
+      variation of both texts.
+
+      :param textA: First text.
+      :type textA: str
+      :param textB: Second text.
+      :type textB: str
+      :param ordered: assert if pack/word should be kept in initial order,
+      defaults to False
+      :type ordered: bool, optional
+      :param nbPack:  number of text parts that will be exchanged,
+      defaults to 0
+      :type nbPack: int, optional
+      :param mutaRate: Mutation rate that represents the rate of exchanged
+      parts in the texts, defaults to 0.25
+      :type mutaRate: float, optional
+      :return: First mutated text.
+      :rtype: str
+      :return: Second mutated text.
+      :rtype: str
+
+
+   .. method:: fit_resample(self, X, Y)
+
+
+      fit_resample
+
+      Performs the actual overfitting by generating new samples/sentences by
+      by genetic combination per class.
+
+      :param X: Text samples.
+      :type X: np.array
+      :param Y: Annotation for each text of X
+      :type Y: np.array
+      :return: Oversampled text samples set.
+      :rtype: np.array
+      :return: Oversampled text annotation.
+      :rtype: np.array
+
+
+
+.. data:: sentA
+   :annotation: = Ceci est une phrase très jolie.
+
+   
+

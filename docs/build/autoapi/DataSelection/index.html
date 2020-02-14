@@ -1,0 +1,413 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DataSelection &mdash; Contract Analysis 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Contract Analysis
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Contract Analysis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">DataSelection</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/autoapi/DataSelection/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-DataSelection">
+<span id="dataselection"></span><h1><a class="reference internal" href="#module-DataSelection" title="DataSelection"><code class="xref py py-mod docutils literal notranslate"><span class="pre">DataSelection</span></code></a><a class="headerlink" href="#module-DataSelection" title="Permalink to this headline">¶</a></h1>
+<p><p>module DataSelection</p>
+<p>Module in charge of selecting data according to the different level of
+annotation (labels) based on a filter based query.
+It allows to select data of a particular type or anomalies.
+It also aggregates lower granules (sentences) to bigger one (clause).</p>
+<dl class="simple">
+<dt>Functions</dt><dd><dl class="simple">
+<dt>loadData</dt><dd><p>Load the text data from a dataset location.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Authors</dt>
+<dd class="field-odd"><p>Nathan Ramoly</p>
+</dd>
+</dl>
+</p>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="DataSelection.loadData">
+<code class="sig-prename descclassname">DataSelection.</code><code class="sig-name descname">loadData</code><span class="sig-paren">(</span><em class="sig-param">colY, filter=[[[], [], []], [[], []]], granularity=0, datasetFolder='C:\Users\Nara\Workspace\datasets\Contrats\datasetSentence'</em><span class="sig-paren">)</span><a class="headerlink" href="#DataSelection.loadData" title="Permalink to this definition">¶</a></dt>
+<dd><p>loadData</p>
+<p>Read and load a dataset folder that contains annotation files (csv) and
+a subdirectories with the raw texts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>colY</strong> – The column that should be used for classification (the labels</p>
+</dd>
+</dl>
+<p>or Y) as: [granularity, column] both as int (pos)
+:type colY: list((int, int))
+:param filter: The list, for each granularity level and each column, of
+accepted classes (if empty, all class are accepted) granularity is the
+granulirity that is to be considered (0 highest, ex: clause), if the colY
+is from a higher granularity, annotation are propagated to children.
+:type filter: list(list(list(str)))
+:param granularity: Granulirty level used for loading (sentence, clause…),
+default: 0. Is the higher level, other values are deeper/smaller text
+decomposition.
+:type granularity: int
+:param datasetFolder: Location of the dataset directory.
+:type datasetFolder: str (dirPath)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The set of values/texts (X).</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict(str, str)</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The set of associated label (Y).</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict(str, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataSelection.loadLabels">
+<code class="sig-prename descclassname">DataSelection.</code><code class="sig-name descname">loadLabels</code><span class="sig-paren">(</span><em class="sig-param">datasetFolder</em><span class="sig-paren">)</span><a class="headerlink" href="#DataSelection.loadLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>loadLabels</p>
+<p>Loard the labels with the following format:
+Format [dictA, dictB, dictC, …]
+Granule level: …C in B in A
+Ids: idA, idA_idB, idA_idB_idC
+dict: {id, [col]}</p>
+<p>For now, it uses default annotatrion csv files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>datasetFolder</strong> (<em>str</em><em> (</em><em>dirPath</em><em>)</em>) – Location of the dataset directory.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of labels decomposed by granularity and dimensions (class</p>
+</dd>
+</dl>
+<p>domain).
+:rtype: list(dict(str, list(str)))</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataSelection.filterLabels">
+<code class="sig-prename descclassname">DataSelection.</code><code class="sig-name descname">filterLabels</code><span class="sig-paren">(</span><em class="sig-param">labels</em>, <em class="sig-param">selections</em><span class="sig-paren">)</span><a class="headerlink" href="#DataSelection.filterLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>filterLabels</p>
+<p>Selects labels according to this template:
+[ [ [classesA_co1], [classesA_co2] ], [ [classesB_co1], [classesB_co2] ] ]
+(See loadData explication for filter)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>list</em><em>(</em><em>dict</em><em>(</em><em>str</em><em>, </em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – List of labels decomposed by granularity and dimensions.</p></li>
+<li><p><strong>selections</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – Filter query.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The set of laabels matching the filter.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(dict(str, list(str))) (to check)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataSelection.selectLabel">
+<code class="sig-prename descclassname">DataSelection.</code><code class="sig-name descname">selectLabel</code><span class="sig-paren">(</span><em class="sig-param">label</em>, <em class="sig-param">selection</em><span class="sig-paren">)</span><a class="headerlink" href="#DataSelection.selectLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>selectLabel</p>
+<p>Apply selection on a single label list, that is the labels for one entry
+for each dimension/domain and granularity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em>) – Labels for one entry/segment.</p></li>
+<li><p><strong>selections</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – Filter query.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Label that fits the filter query</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, list(str)) (to check)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataSelection.recursiveSelect">
+<code class="sig-prename descclassname">DataSelection.</code><code class="sig-name descname">recursiveSelect</code><span class="sig-paren">(</span><em class="sig-param">labels</em><span class="sig-paren">)</span><a class="headerlink" href="#DataSelection.recursiveSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>recursiveSelect</p>
+<p>Filter labels of child granules recurisvely</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>labels</strong> (<em>list</em><em>(</em><em>dict</em><em>(</em><em>str</em><em>, </em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – List of labels decomposed by granularity and dimensions.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>filtered label</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataSelection.loadText">
+<code class="sig-prename descclassname">DataSelection.</code><code class="sig-name descname">loadText</code><span class="sig-paren">(</span><em class="sig-param">datasetFolder</em>, <em class="sig-param">labels</em><span class="sig-paren">)</span><a class="headerlink" href="#DataSelection.loadText" title="Permalink to this definition">¶</a></dt>
+<dd><p>loadTest</p>
+<p>Load the raw text according to the selected labels through their ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>datasetFolder</strong> (<em>str</em><em> (</em><em>dirPath</em><em>)</em>) – Location of the dataset directory.</p></li>
+<li><p><strong>labels</strong> (<em>list</em><em>(</em><em>dict</em><em>(</em><em>str</em><em>, </em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – List of labels per id.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Selected raw text</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataSelection.mergeGranule">
+<code class="sig-prename descclassname">DataSelection.</code><code class="sig-name descname">mergeGranule</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#DataSelection.mergeGranule" title="Permalink to this definition">¶</a></dt>
+<dd><p>mergeGranule</p>
+<p>Merges granules to the upper level.
+For now, only for higher level (clause).
+Example: sentences to clause</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>str</em><em>)</em>) – Textual subgranules.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Text for upper level granule.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataSelection.selectLearningClass">
+<code class="sig-prename descclassname">DataSelection.</code><code class="sig-name descname">selectLearningClass</code><span class="sig-paren">(</span><em class="sig-param">colY</em>, <em class="sig-param">granularity</em>, <em class="sig-param">data</em>, <em class="sig-param">labels</em><span class="sig-paren">)</span><a class="headerlink" href="#DataSelection.selectLearningClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>selectLearningClass</p>
+<p>Determine X and Y
+TODO diff granularity level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>colY</strong> – The column that should be used for classification (the labels</p>
+</dd>
+</dl>
+<p>or Y) as: [granularity, column] both as int (pos)
+:type colY: list((int, int))
+:param granularity: Granulirty level used for loading (sentence, clause…).
+:type granularity: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>str</em><em>)</em>) – Textual granules.</p></li>
+<li><p><strong>labels</strong> (<em>list</em><em>(</em><em>dict</em><em>(</em><em>str</em><em>, </em><em>list</em><em>(</em><em>str</em><em>)</em><em>)</em><em>)</em>) – List of labels per id.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The set of values/texts (X).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The set of associated label (Y).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Iyeum Lab
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

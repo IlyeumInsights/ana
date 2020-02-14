@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RulesManager &mdash; Contract Analysis 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Contract Analysis
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Contract Analysis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">RulesManager</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/autoapi/RulesManager/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-RulesManager">
+<span id="rulesmanager"></span><h1><a class="reference internal" href="#module-RulesManager" title="RulesManager"><code class="xref py py-mod docutils literal notranslate"><span class="pre">RulesManager</span></code></a><a class="headerlink" href="#module-RulesManager" title="Permalink to this headline">¶</a></h1>
+<p><p>module RulesManager</p>
+<p>Load rules as dictionnary and analyze them (it does no evaluate them for now).
+Rule based evaluation, based on a KB, is a perspective.</p>
+<dl class="simple">
+<dt>Class</dt><dd><p>RulesManager</p>
+</dd>
+</dl>
+</p>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="RulesManager.RulesManager">
+<em class="property">class </em><code class="sig-prename descclassname">RulesManager.</code><code class="sig-name descname">RulesManager</code><span class="sig-paren">(</span><em class="sig-param">rulesPath='rules\politics.swrl'</em><span class="sig-paren">)</span><a class="headerlink" href="#RulesManager.RulesManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>class RulesManager</p>
+<p>Load a set of SWRL rules that represent policies, and analyzes them.
+Rules are stored in a file provided (path) to the constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rules</strong> – The set of rules reprensented as dictionnary that associates</p>
+</dd>
+</dl>
+<p>identifier (policy name) to an actual rule.
+:type rules: dict(str, str)</p>
+<dl class="method">
+<dt id="RulesManager.RulesManager.loadRules">
+<code class="sig-name descname">loadRules</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">rulesPath</em><span class="sig-paren">)</span><a class="headerlink" href="#RulesManager.RulesManager.loadRules" title="Permalink to this definition">¶</a></dt>
+<dd><p>loadRules</p>
+<p>Load a set of rules from a SWRL file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rulesPath</strong> (<em>str</em><em> (</em><em>filePath</em><em>)</em>) – Path to the SWRL file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="RulesManager.RulesManager.gatherClass">
+<code class="sig-name descname">gatherClass</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#RulesManager.RulesManager.gatherClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>gatherClass</p>
+<p>Gather the classes mentionned in the rules</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The classes indentified in the rules.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list(str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="RulesManager.RulesManager.getPoliticsOfClass">
+<code class="sig-name descname">getPoliticsOfClass</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">clauseType</em><span class="sig-paren">)</span><a class="headerlink" href="#RulesManager.RulesManager.getPoliticsOfClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>getPoliticsOfClass</p>
+<p>Gather the policies related to one clause type according to the rules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>clauseType</strong> (<em>str</em>) – Type of clause.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Policies related to the given clause type</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="RulesManager.RulesManager.politicAppliesToSentence">
+<code class="sig-name descname">politicAppliesToSentence</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">politic</em><span class="sig-paren">)</span><a class="headerlink" href="#RulesManager.RulesManager.politicAppliesToSentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>politicAppliesToSentence</p>
+<p>Assert if a politic can be applied to a sentence or a complete clause.
+If true, classifier can be applied on sentences extraced from clause.
+To evaluate this assertion, rules predicate are reviewed.
+For now, predicate compatible with sentences are hard coded
+By default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>politic</strong> (<em>str</em>) – Policy to check. (TODO rename)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True is the policy applies to a sentence, False if it applies</p>
+</dd>
+</dl>
+<p>to a full clause, defaults to False.
+:rtype: bool</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="RulesManager.rm">
+<code class="sig-prename descclassname">RulesManager.</code><code class="sig-name descname">rm</code><a class="headerlink" href="#RulesManager.rm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Iyeum Lab
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

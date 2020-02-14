@@ -1,0 +1,355 @@
+:mod:`DataPreparation`
+======================
+
+.. py:module:: DataPreparation
+
+.. autoapi-nested-parse::
+
+   module DataPreparation
+
+   Provides function to Clean, Transform and Format data in preparation for the ML.
+
+   Functions:
+       loadDataset
+           Loads the raw data from a directory.
+       transform
+           Transforms texts into features thanks to textual feature extraction
+           technique including bow (tf-idf, count, hashing) and Doc2Dev.
+       prepareData
+           Load dataset and extract features to prepare data for ML.
+       prepareDataIly
+           Same as prepareData, but specifically on Ilyeum contract dataset.
+       preparationReport
+           Provides a textual report of the complete preparation process.
+
+   :Authors: Nathan Ramoly
+
+
+
+Module Contents
+---------------
+
+.. function:: loadDataset(datadir='C:\\Users\\Nara\\Workspace\\datasets\\Contrats\\aggDataset')
+
+   loadDataset
+
+   Generates two dictionnaries describing segments from a directory of a
+   dataset containing raw data and annotation.
+   .. todo:: Handle default directory pass.
+
+   :param datadir: directory of the dataset to load.
+   :type text: str (filepath)
+
+   (segId, text)
+   (segId, label)
+   :return: Dictionnary associating segment to text (segId, text)
+   :rtype: dict(int, str)
+   :return: Dictionnary associating segment to label/annotation (segId, label)
+   :rtype: dict(int, str)
+
+
+.. function:: cleanSegments(segments)
+
+   cleanSegments
+
+   Clean all segments using the DataCleaning module.
+
+   :param segments: Raw segments of text.
+   :type segments: dict(int, str)
+
+   :return: Clean segments.
+   :rtype: dict(int, str)
+
+
+.. function:: convertLabels(labels, classes, binary=False, refClass=None)
+
+   convertLabels
+
+   Convert the string label to numerical one.
+   Binary = if different than one class
+   refClass = list of reference classes
+
+   :param labels: Dictionnary of raw annotation to convert per segment id.
+   :type labels: dict(str, str)
+
+   :param classes: List of all known classes in the domain.
+   :type classes: list(str)
+
+   :param Binary: Convert label into 1 and 0 values, 1 meaning the label
+   matches the reference class, 0 otherwise. The reference classes are provided
+   or, by default, is the first class in the 'classes' array.
+   :type Binary: bool
+
+   :param refClass: Reference classes that are to be converted, while the
+   other ones are ignored.
+   :type refClass: list(str)
+
+   :return: Set of label/class as numerical values.
+   :rtype: dict(str, int)
+   :return: Mapping between textual and numerical labels.
+   :rtype: dict(str, int)
+
+
+.. function:: transform(segments, labels, transformer='count', oversample=False, trasnformSerial='Models\\vectorizer.pickle')
+
+   transform
+
+   Transform a set of textual segments into features.
+   It offer multiple feature extraction techniques and can oversample the
+   data set classicaly or geneticaly (see TextGeneticOversampler module).
+
+   :param segments: Raw segments of text.
+   :type segments: list(str)
+
+   :param labels: List of raw annotation associated to each segment.
+   :type oversample: list(str)
+
+   :param transformer: Feature extraction tool to use:
+       - 'count' or 'bow' (default): standard BOW using sklearn.CountVectorizer.
+       - 'tfidf' or 'tf-idf': TF-IDF feature extraction through
+       sklearn.TfidfVectorizer.
+       - 'hash':  Uses sklearn.HashingVectorizer
+       - 'doc2vec': DL doc2vec approach provided by Gensim.
+   :type transformer: str
+
+   :param oversample: Assert if oversample should be performed or not.
+   :type oversample: bool
+
+   :param trasnformSerial: Transform process export path.
+   :type trasnformSerial: str (filepath)
+
+   :return: Set of data of training (x_train)
+   :rtype: np.array
+   :return: Set of label of training (y_train)
+   :rtype: np.array
+   :return: Set of data of testing (x_test)
+   :rtype: np.array
+   :return: Set of label of testing (y_test)
+   :rtype: np.array
+
+
+.. function:: transformBOW(segments, labels, segments_test=None, labels_test=None, serialPath='Models\\vectorizer.pickle')
+
+   transformBOW
+
+   Apply feature extraction with sklearn.CountVectorizer.
+   It relies on char_wb and an ngram range of [4,5].
+   .. todo:: Adapt parameter in the AutoML process
+
+   :param segments: Raw segments of text.
+   :type segments: np.array
+
+   :param labels: List of raw annotation associated to each segment.
+   :type labels: np.array
+
+   :param serialPath: Transform process export path.
+   :type serialPath: str (filepath)
+
+   :param segments_test: Test segments to transform.
+   :type segments_test: np.array
+
+   :param labels_test: List of labels on the test set.
+   :type labels_test: np.array
+
+
+   :return: Set of data of training (x_train)
+   :rtype: np.array
+   :return: Set of label of training (y_train)
+   :rtype: np.array
+   :return: Set of data of testing (x_test)
+   :rtype: np.array
+   :return: Set of label of testing (y_test)
+   :rtype: np.array
+
+
+.. function:: transformHashing(segments, labels, segments_test=None, labels_test=None, serialPath='Models\\vectorizer.pickle')
+
+   transformHashing
+
+   Apply feature extraction with sklearn.HashingVectorizer.
+
+   :param segments: Raw segments of text.
+   :type segments: np.array
+
+   :param labels: List of raw annotation associated to each segment.
+   :type labels: np.array
+
+   :param serialPath: Transform process export path.
+   :type serialPath: str (filepath)
+
+   :param segments_test: Test segments to transform.
+   :type segments_test: np.array
+
+   :param labels_test: List of labels on the test set.
+   :type labels_test: np.array
+
+   :return: Set of data of training (x_train)
+   :rtype: np.array
+   :return: Set of label of training (y_train)
+   :rtype: np.array
+   :return: Set of data of testing (x_test)
+   :rtype: np.array
+   :return: Set of label of testing (y_test)
+   :rtype: np.array
+
+
+.. function:: transformTFIDF(segments, labels, segments_test=None, labels_test=None, serialPath='Models\\vectorizer.pickle')
+
+   transformTFIDF
+
+   Apply feature extraction with sklearn.TfidfVectorizer.
+
+   :param segments: Raw segments of text.
+   :type segments: np.array
+
+   :param labels: List of raw annotation associated to each segment.
+   :type labels: np.array
+
+   :param serialPath: Transform process export path.
+   :type serialPath: str (filepath)
+
+   :param segments_test: Test segments to transform.
+   :type segments_test: np.array
+
+   :param labels_test: List of labels on the test set.
+   :type labels_test: np.array
+
+   :return: Set of data of training (x_train)
+   :rtype: np.array
+   :return: Set of label of training (y_train)
+   :rtype: np.array
+   :return: Set of data of testing (x_test)
+   :rtype: np.array
+   :return: Set of label of testing (y_test)
+   :rtype: np.array
+
+
+.. function:: transformDoc2Vec(segments, labels, segments_test=None, labels_test=None)
+
+   transformDoc2Vec
+
+   Apply feature extraction with gensim.Doc2Vec.
+   Be aware that this process is heavy.
+
+   :param segments: Raw segments of text.
+   :type segments: np.array
+
+   :param labels: List of raw annotation associated to each segment.
+   :type labels: np.array
+
+   :param segments_test: Test segments to transform.
+   :type segments_test: np.array
+
+   :param labels_test: List of labels on the test set.
+   :type labels_test: np.array
+
+   :return: Set of data of training (x_train)
+   :rtype: np.array
+   :return: Set of label of training (y_train)
+   :rtype: np.array
+   :return: Set of data of testing (x_test)
+   :rtype: np.array
+   :return: Set of label of testing (y_test)
+   :rtype: np.array
+
+
+.. function:: oversampling(X, Y, random=0)
+
+   oversampling
+
+   Oversample datasets (already transformed)
+   The resulting size of each class set is almost equal.
+
+   :param X: Data to oversample.
+   :type X: np.array
+
+   :param Y: Labels associated to the data.
+   :type Y: np.array
+
+
+.. function:: classFilter(segments, labels, classes)
+
+   classFilter
+
+   Filter the dataset with only selected classes.
+
+   :param segments: Segments of text to filter.
+   :type segments: dict(int, str)
+
+   :param labels: Dictionnary of raw annotation to convert per segment id.
+   :type labels: dict(str, str)
+
+   :param classes: List of all accepted class.
+   :type classes: list(str)
+
+
+   :return: Filtered set of segments of text.
+   :rtype: dict(int, str)
+   :return: Filtered labels.
+   :rtype: dict(str, str)
+
+
+.. function:: debug_tsne_plot(model)
+
+   debug_tsne_plot
+
+   Creates and TSNE model and plots it.
+   Used for deub/experiments.
+   From https://www.kaggle.com/jeffd23/visualizing-word-vectors-with-t-sne
+
+
+.. function:: display_scores(vectorizer, tfidf_result)
+
+   display_scores
+
+   Debug function.
+   http://stackoverflow.com/questions/16078015/
+
+
+.. function:: prepareData()
+
+   prepareData
+
+   Load, clean and transform a dataset from a fixed location
+   It povides the data and annotation ready to be processed my ML tools.
+   Not used anaymore.
+   .. todo:: Perform data load from a database and a selected domain.
+
+   :return: Set of data of training (x_train)
+   :rtype: np.array
+   :return: Set of label of training (y_train)
+   :rtype: np.array
+   :return: Set of data of testing (x_test)
+   :rtype: np.array
+   :return: Set of label of testing (y_test)
+   :rtype: np.array
+
+
+.. function:: prepareDataIly(labelType, labelLevel, granularity=0, filter=[[[], [], []], [[], []]], labelBinary=False, labelClasses=None, oversample=False, transformer='count', datasetFolder='C:\\Users\\Nara\\Workspace\\datasets\\Contrats\\datasetSentence2', trasnformSerial='Models\\vectorizer.pickle', mappingExport=None)
+
+   prepareDataIly
+
+   Load, clean and transform Ilyeum contract dataset?
+   It povides the data and annotation ready to be processed my ML tools.
+   .. todo:: Perform data load from a database and a selected domain.
+
+   :return: Set of data of training (x_train)
+   :rtype: np.array
+   :return: Set of label of training (y_train)
+   :rtype: np.array
+   :return: Set of data of testing (x_test)
+   :rtype: np.array
+   :return: Set of label of testing (y_test)
+   :rtype: np.array
+
+
+.. function:: preparationReport(labelType, labelLevel, granularity, filter, labelBinary, labelClasses, oversample, datasetFolder, classes, labels, x_train, x_test, y_train, y_test, mapping, transformer)
+
+   preparationReport
+
+   Generate a string report of the data preparation.
+
+   :return: Report of preparation of data.
+   :rtype: str
+
+

@@ -1,0 +1,40 @@
+Clause de non-sollicitation
+R1	Présence
+R2	Valable pendant la durée du contrat et 12 mois après
+R3	Partenaire et client final à la fois
+R4	Indemnité équivalente à 12 mois de rémunération brute du collaborateur débauché
+R5	Réciprocité de la clause ou juste « pour nous » (nous pouvons débaucher)
+
+
+Résiliation
+R6	Présence de résiliation de convenance
+R7   o	Délai de 30 jours (jusqu’à 60)
+R8	Réciprocité complète
+R9	Présence d’un préavis (délai) pour tout type de résiliation
+R10	Réciprocité du délai de prévenance entre client final et partenaire
+
+
+Paiement
+R11	Uniquement par virement
+R12	Délai inférieur à 45 jours nets (à compter de l’édition de la facture, et pas fin de mois)
+
+
+Indemnisation
+R13	Refus de payer des indemnités
+
+
+Non-concurrence
+R14	Supprimer dans l’idéal
+R15 Limité dans le temps (max 12 mois)
+R16	Limité au service où est la personne ou par pôle de compétences (exclusivement infra, par ex.)
+
+
+Autres
+R17	Refus de clause « d’obligation de résultats » en régie
+R18	Refus de « prix ferme » : doit être révisable annuellement
+R19	Non remplacement en cas d’absence (sauf en cas d’absence longue, imprévue -> au cas par cas)
+R20 Autres inclassables
+
+Clauses de même type:
+Reciprocité R5 R8
+Delai R7 R12

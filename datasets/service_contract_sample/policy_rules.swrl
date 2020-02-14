@@ -1,0 +1,9 @@
+# Policies swrl rules sample
+ 
+R5: is(?c, "clause") ^ type(?c, "non_sollicitation") ^ hasSubject(?c, ?s1) ^ is(?s1, "fournisseur") ^ hasSubject(?c, ?s2) ^ is(?s2, "client") -> validity(?c, 1)
+
+R9: is(?c, "clause") ^ type(?c, "resiliation") ^ notContains(?c, "preavis") -> validity(?c, 0)
+
+R12: is(?c, "clause") ^ type(?c, "paiement") ^ hasDuration(?c, ?d, ?u) ^ greaterThan(?d, 45) ^ is(?u, "days") -> validity(?c, 0)
+
+

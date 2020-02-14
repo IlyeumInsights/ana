@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Utils Package &mdash; ANA 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Evaluation Package" href="evaluation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ANA
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../process.html">ANA Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code.html">Project Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="knowledge.html">Knowledge Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preparation.html">Preparation Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training.html">Training Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluation Package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Utils Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-election">Module Election</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ANA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Reference</a> &raquo;</li>
+        
+      <li>Utils Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="utils-package">
+<h1>Utils Package<a class="headerlink" href="#utils-package" title="Permalink to this headline">¶</a></h1>
+<p>General purpose functions and classes.</p>
+<span class="target" id="module-ana.utils.Election"></span><div class="section" id="module-election">
+<h2>Module Election<a class="headerlink" href="#module-election" title="Permalink to this headline">¶</a></h2>
+<p>Election/voting procedure for selection and/or decision making according to
+multiple sources.
+Election can be configured in various way, and exported for further elections.</p>
+<dl class="simple">
+<dt>Classes:</dt><dd><dl class="simple">
+<dt>Candidate</dt><dd><p>Represents a possible option in the election and its counts. It mainly
+carries comparison operators.</p>
+</dd>
+<dt>Election</dt><dd><p>Carries election modalities and performs the vote.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Authors</dt>
+<dd class="field-odd"><p>Nathan Ramoly</p>
+</dd>
+</dl>
+<dl class="class">
+<dt id="ana.utils.Election.Candidate">
+<em class="property">class </em><code class="sig-prename descclassname">ana.utils.Election.</code><code class="sig-name descname">Candidate</code><span class="sig-paren">(</span><em class="sig-param">value</em>, <em class="sig-param">count=0</em>, <em class="sig-param">pcount=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.utils.Election.Candidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>class Candidate</p>
+<p>Represents a possible election options.
+This class carries comparison operators and its main role is to ease
+comparison between candidates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>str</em>) – Name/id of the candidate</p></li>
+<li><p><strong>count</strong> (<em>int</em>) – Number of vote for this candidate.</p></li>
+<li><p><strong>pcount</strong> (<em>int</em>) – Ponderated count.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="ana.utils.Election.Election">
+<em class="property">class </em><code class="sig-prename descclassname">ana.utils.Election.</code><code class="sig-name descname">Election</code><span class="sig-paren">(</span><em class="sig-param">path=None</em>, <em class="sig-param">mode=None</em>, <em class="sig-param">default=None</em>, <em class="sig-param">priority=None</em>, <em class="sig-param">resultlvl=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.utils.Election.Election" title="Permalink to this definition">¶</a></dt>
+<dd><p>class Election</p>
+<p>Represents the election process for decision making or selection.
+Several parameters can be adjusted for the election.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> (</em><em>filepath</em><em>)</em>) – Path of the serialized election to import. ‘None’ by default.</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – Vote mode; defines the way ballots are counted.
+- ‘std’ (standard): normal counting
+- ‘ato’ (at least one): count the default value
+- ‘pnd’ (ponderated): count with weighted ballots. Without provided
+weights, the order defines the ponderation.
+- ‘not’ (nothing but): count by excluding the selected candidate.</p></li>
+<li><p><strong>default</strong> (<em>str</em>) – Default value, behavior varies according to the mode:
+- std:he default value is the selected one in case of equality.
+- ato: the default value is the one that is counted.
+- not: values different than the default value are returned.
+- pnd:the default value is the selected one in case of equality.</p></li>
+<li><p><strong>priority</strong> (<em>str</em>) – Priority mode.
+- ‘first’: asceding importance (first ballots have more weights)
+- ‘last’: descending importance (last ballots have more weights)</p></li>
+<li><p><strong>resultlvl</strong> (<em>str</em>) – Verbosity of the output.
+- ‘min’ (minimal): returns only the candidate with the most votes and
+priority.
+- ‘ele’ (elected): returns all candidates with the most votes (equality)
+- ‘ful’ (full): returns all candidates in order associated with their
+respective counts.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="ana.utils.Election.Election.counting">
+<code class="sig-name descname">counting</code><span class="sig-paren">(</span><em class="sig-param">ballots</em>, <em class="sig-param">ponderation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.utils.Election.Election.counting" title="Permalink to this definition">¶</a></dt>
+<dd><p>counting method</p>
+<p>Performs the vote and countings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ballots</strong> (<em>list</em><em>(</em><em>any</em><em>)</em>) – List of elements that are to be counted. Elements should
+be comparable.</p></li>
+<li><p><strong>ponderation</strong> (<em>list</em><em>(</em><em>float</em><em>)</em>) – Associated list of weights. There should be as
+many weights as there are elements in the ballots list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Selected element(s) or list of elements with their count.
+(depends on the selected ‘resultlvl’)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ana.utils.Election.Election.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.utils.Election.Election.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>export method</p>
+<p>Exports election modalities (parameters) into a file.
+It can be seen as an election template.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> (</em><em>filePath</em><em>)</em>) – Export destination.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="evaluation.html" class="btn btn-neutral float-left" title="Evaluation Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Iyeum
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

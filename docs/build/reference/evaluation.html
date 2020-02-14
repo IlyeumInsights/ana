@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Evaluation Package &mdash; ANA 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Utils Package" href="utils.html" />
+    <link rel="prev" title="Training Package" href="training.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ANA
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../process.html">ANA Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code.html">Project Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="knowledge.html">Knowledge Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preparation.html">Preparation Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training.html">Training Package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Evaluation Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-clauseanalyzer">Module ClauseAnalyzer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils Package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ANA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Reference</a> &raquo;</li>
+        
+      <li>Evaluation Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/evaluation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ana.evaluation.ClauseAnalyzer">
+<span id="evaluation-package"></span><h1>Evaluation Package<a class="headerlink" href="#module-ana.evaluation.ClauseAnalyzer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-clauseanalyzer">
+<h2>Module ClauseAnalyzer<a class="headerlink" href="#module-clauseanalyzer" title="Permalink to this headline">¶</a></h2>
+<p>Performs clause classification, from phase 1 (type) to phase 3 (anomaly type).
+All models shall be already trained before using this module.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>In the future, it should include a server that receives a clause,
+classifies it and sends back the result of classification.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Functions</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>analyzeClause:</dt><dd><p>Analyze a given clause and provides its infered type,
+anomaly and violated policy</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Author</dt>
+<dd class="field-even"><p>Nathan Ramoly</p>
+</dd>
+</dl>
+<dl class="function">
+<dt id="ana.evaluation.ClauseAnalyzer.analyzeClause">
+<code class="sig-prename descclassname">ana.evaluation.ClauseAnalyzer.</code><code class="sig-name descname">analyzeClause</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">clauseTitle=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.evaluation.ClauseAnalyzer.analyzeClause" title="Permalink to this definition">¶</a></dt>
+<dd><p>Core function of clause analysis.
+Performs the full analysis (phase 1 to 3) of a clause.
+It first determines the type of the clause (phase 1).
+Then according to the outcome of phase 1, determines if the clause is
+anomalous or correct.
+If the clause is detected an anomalous, phase 3 is performed to infer
+the violated policies, thus explaining the rejection of the clause.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clause</strong> (<em>str</em>) – The textual clause.</p></li>
+<li><p><strong>clauseTitle</strong> (<em>str</em>) – The title of the clause, that is used for key word
+search, defaults to ‘None’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>The inferred type of the clause (str).</p></li>
+<li><p>True if the clause is detected as anomalous, False otherwise (bool).</p></li>
+<li><p>List of inferred violted policies (list(str)).</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.evaluation.ClauseAnalyzer.convertLabelToVal">
+<code class="sig-prename descclassname">ana.evaluation.ClauseAnalyzer.</code><code class="sig-name descname">convertLabelToVal</code><span class="sig-paren">(</span><em class="sig-param">label</em>, <em class="sig-param">classList</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.evaluation.ClauseAnalyzer.convertLabelToVal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a textual label to its numeric counterpart .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>str</em>) – Label to convert.</p></li>
+<li><p><strong>classList</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – List of classes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The numerical identifier of the label (that is its position in the
+list)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.evaluation.ClauseAnalyzer.evaluateClauseTypeVocab">
+<code class="sig-prename descclassname">ana.evaluation.ClauseAnalyzer.</code><code class="sig-name descname">evaluateClauseTypeVocab</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">mapping</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.evaluation.ClauseAnalyzer.evaluateClauseTypeVocab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the clause by key word search rather than ML classification.
+Vocabulary is provided, for now, in a file at a fixed location.
+It is mainly used to infer the clause type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clause</strong> (<em>str</em>) – The textual clause. Mandatory argument.</p></li>
+<li><p><strong>mapping</strong> (<em>dict</em><em>(</em><em>int</em><em>,</em><em>str</em><em>)</em>) – Mapping between labels and class.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Inferred class.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.evaluation.ClauseAnalyzer.evaluateModels">
+<code class="sig-prename descclassname">ana.evaluation.ClauseAnalyzer.</code><code class="sig-name descname">evaluateModels</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">phaseDir</em>, <em class="sig-param">modelNames</em>, <em class="sig-param">sentVote</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.evaluation.ClauseAnalyzer.evaluateModels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a clause on a set of models, of a given phase, that perform
+similar classifications.
+Clauses can be analyze according to various granularity.
+When model works on a smaller scale (than the clause), results are
+aggregated back at clause level through an election process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clause</strong> (<em>str</em>) – The textual clause. Mandatory argument.</p></li>
+<li><p><strong>phaseDir</strong> (<em>str</em><em> (</em><em>filepath</em><em>)</em>) – Path to the directory containing the models of the
+selected evaluation phase.</p></li>
+<li><p><strong>modelNames</strong> (<em>str</em>) – List of models to apply to the clause.</p></li>
+<li><p><strong>modelNames</strong> – Sentence election mode, currently not used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>The list of classification outcomes per model (list(int)).</p></li>
+<li><p>The list of mappings label/class (list(map)).</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.evaluation.ClauseAnalyzer.evaluatePhaseOne">
+<code class="sig-prename descclassname">ana.evaluation.ClauseAnalyzer.</code><code class="sig-name descname">evaluatePhaseOne</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">clauseTitle=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.evaluation.ClauseAnalyzer.evaluatePhaseOne" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the phase one of the classification.
+Uses trained models of phase one and key word research to infer the type
+of the clause.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clause</strong> (<em>str</em>) – The textual clause.</p></li>
+<li><p><strong>clauseTitle</strong> (<em>str</em>) – The title of the clause, that is used for key word
+search, defaults to ‘None’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The inferred type of the clause.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.evaluation.ClauseAnalyzer.evaluatePhaseThree">
+<code class="sig-prename descclassname">ana.evaluation.ClauseAnalyzer.</code><code class="sig-name descname">evaluatePhaseThree</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">clauseType</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.evaluation.ClauseAnalyzer.evaluatePhaseThree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the phase three of the classification process knowing the type
+of the clause.
+It uses trained models of phase three to infer the policies violated by the
+clause.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clause</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The textual clause.</p></li>
+<li><p><strong>clauseType</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Type of the clause inferred in phase one or provided.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of inferred violted policies</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.evaluation.ClauseAnalyzer.evaluatePhaseTwo">
+<code class="sig-prename descclassname">ana.evaluation.ClauseAnalyzer.</code><code class="sig-name descname">evaluatePhaseTwo</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">clauseType</em><span class="sig-paren">)</span><a class="headerlink" href="#ana.evaluation.ClauseAnalyzer.evaluatePhaseTwo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the phase two of the classification knowing the type of the clause.
+It uses trained models of phase two to assert if the clause is anomalous.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clause</strong> (<em>str</em>) – The textual clause.</p></li>
+<li><p><strong>clauseType</strong> (<em>str</em>) – Type of the clause inferred in phase one or provided.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the clause is detected as anomalous, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ana.evaluation.ClauseAnalyzer.evaluationOnTestSet">
+<code class="sig-prename descclassname">ana.evaluation.ClauseAnalyzer.</code><code class="sig-name descname">evaluationOnTestSet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ana.evaluation.ClauseAnalyzer.evaluationOnTestSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the quality of the process.
+Used for debugging and ML conception.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="utils.html" class="btn btn-neutral float-right" title="Utils Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="training.html" class="btn btn-neutral float-left" title="Training Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Iyeum
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+:mod:`DataAcquisition`
+======================
+
+.. py:module:: DataAcquisition
+
+.. autoapi-nested-parse::
+
+   module DataAcquisition
+   Acquires annotated texts (raw or json), stores them in a db and generates
+   dataset for the learning phase.
+   WIP
+
+   :Authors: Nathan Ramoly
+
+
+
+Module Contents
+---------------
+
+.. function:: acquireJSONContract(domain, jsoncontract)
+
+   acquireJSONContract
+
+   Acquires an instance (version) of a contract as a JSON, stores in in db
+   according to matching domain (ilyeum, eula, etc.) and parent contract
+   (a contract have serveral instances/versions during negotiation).
+
+   TODO Check previous contract similarity
+
+
+.. function:: createNewDocument(name, description, author, client)
+
+   Create a new document/contract as a json format
+   Format:
+   {
+       _id: uuid
+       name: string
+       description: string
+       author: string
+       client: string
+   }
+
+
+.. function:: acquireNewContract(domain, jsonContractInfo)
+
+
+.. function:: exportDataset(domain, levels)
+
+
+.. py:class:: DocumentAcquisitor(domain, name, description=None, version=None, date=datetime.datetime.now())
+
+   class DocumentAcquisitor
+
+   Incrementaly create a JSON annotated documents instance by going through
+   subparts (clause, sentence).
+   Created JSON structure (wip):
+   {
+       parentDocument: uuid
+       version: version of the current instance of contracts (?)
+       date: date of the upload or insertion (if not provided)
+       content:
+       {
+           level1:
+           [{
+               _id:              
+               level: ?
+               parentText: id
+               position: position in parent text (offset)
+               text: string
+               annotations:
+               {
+                   dimension1: annotation1
+                   ...
+                   dimensionN: annotationN
+               }
+           }]
+           level2:
+           [{
+               ...
+           }]
+       }
+   }
+
+   .. attribute:: jsonDocInstance
+      
+
+      
+
+   .. method:: addAnnotatedSubtext(self, text, level, annotation, id=uuid.uuid4(), parentText=None, position=None)
+
+
+      id is an uuid or a given string ("clause1")
+      Annotation is a dict {dimensions:annotations} (ex {type:pay, anom:R4})
+
+
+   .. method:: export(self)
+
+
+
+   .. method:: debugDisplay(self)
+
+
+
+   .. method:: store(self)
+
+
+
+
+.. data:: da
+   
+
+   
+

@@ -1,0 +1,29 @@
+:mod:`tpot_export`
+==================
+
+.. py:module:: tpot_export
+
+
+Module Contents
+---------------
+
+.. data:: tpot_data
+   
+
+   
+
+.. data:: features
+   
+
+   
+
+.. data:: exported_pipeline
+   
+
+   
+
+.. data:: results
+   
+
+   
+

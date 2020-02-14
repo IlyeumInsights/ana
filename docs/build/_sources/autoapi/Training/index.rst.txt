@@ -1,0 +1,19 @@
+:mod:`Training`
+===============
+
+.. py:module:: Training
+
+.. autoapi-nested-parse::
+
+   Testing ML approacher
+
+
+
+Module Contents
+---------------
+
+.. data:: C
+   :annotation: = 25.0
+
+   
+

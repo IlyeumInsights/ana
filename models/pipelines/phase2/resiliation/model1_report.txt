@@ -1,0 +1,45 @@
+
+DATA PREPARATION REPORT: 
+-----
+Data source:        C:\Users\Nara\Workspace\datasets\Contrats\datasetSentence2Train
+Data Granularity:   0
+Label Granularity:  0
+Label classif col:  1
+Label classif cla:  ['None', 'R1', 'R2', 'R3', 'R4', 'R5', 'R6', 'R7', 'R8', 'R9', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20']
+Data selection:     [[[], [], ['resiliation']], [[], []]]
+Selected Transform: count
+Binary classif:     True
+Restricted classif: None
+Genetic oversample: False
+-----
+Labels Mapping: 
+R8: 1
+None: -1
+R9: 1
+R6: 1
+R7: 1
+-----
+Initial Y size: 45
+post-transform X train size: 56
+post-transform Y train size: 56
+post-transform X test size:  12
+post-transform Y test size:  12
+-----
+END DATA PREPARATION REPORT. 
+
+-----
+CLASSIFICATION REPORT: 
+Accuracy:100.00%
+              precision    recall  f1-score   support
+
+          -1       1.00      1.00      1.00         6
+           1       1.00      1.00      1.00         6
+
+    accuracy                           1.00        12
+   macro avg       1.00      1.00      1.00        12
+weighted avg       1.00      1.00      1.00        12
+
+Predicted: 
+[ 1 -1 -1 -1  1 -1  1 -1  1  1 -1  1]
+Expected: 
+[ 1 -1 -1 -1  1 -1  1 -1  1  1 -1  1]

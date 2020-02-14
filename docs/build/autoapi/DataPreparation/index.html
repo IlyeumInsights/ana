@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DataPreparation &mdash; Contract Analysis 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Contract Analysis
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Contract Analysis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">DataPreparation</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/autoapi/DataPreparation/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-DataPreparation">
+<span id="datapreparation"></span><h1><a class="reference internal" href="#module-DataPreparation" title="DataPreparation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">DataPreparation</span></code></a><a class="headerlink" href="#module-DataPreparation" title="Permalink to this headline">¶</a></h1>
+<p><p>module DataPreparation</p>
+<p>Provides function to Clean, Transform and Format data in preparation for the ML.</p>
+<dl class="simple">
+<dt>Functions:</dt><dd><dl class="simple">
+<dt>loadDataset</dt><dd><p>Loads the raw data from a directory.</p>
+</dd>
+<dt>transform</dt><dd><p>Transforms texts into features thanks to textual feature extraction
+technique including bow (tf-idf, count, hashing) and Doc2Dev.</p>
+</dd>
+<dt>prepareData</dt><dd><p>Load dataset and extract features to prepare data for ML.</p>
+</dd>
+<dt>prepareDataIly</dt><dd><p>Same as prepareData, but specifically on Ilyeum contract dataset.</p>
+</dd>
+<dt>preparationReport</dt><dd><p>Provides a textual report of the complete preparation process.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Authors</dt>
+<dd class="field-odd"><p>Nathan Ramoly</p>
+</dd>
+</dl>
+</p>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="DataPreparation.loadDataset">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">loadDataset</code><span class="sig-paren">(</span><em class="sig-param">datadir='C:\Users\Nara\Workspace\datasets\Contrats\aggDataset'</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.loadDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>loadDataset</p>
+<p>Generates two dictionnaries describing segments from a directory of a
+dataset containing raw data and annotation.
+.. todo:: Handle default directory pass.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>datadir</strong> – directory of the dataset to load.</p>
+</dd>
+</dl>
+<p>(segId, text)
+(segId, label)
+:return: Dictionnary associating segment to text (segId, text)
+:rtype: dict(int, str)
+:return: Dictionnary associating segment to label/annotation (segId, label)
+:rtype: dict(int, str)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.cleanSegments">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">cleanSegments</code><span class="sig-paren">(</span><em class="sig-param">segments</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.cleanSegments" title="Permalink to this definition">¶</a></dt>
+<dd><p>cleanSegments</p>
+<p>Clean all segments using the DataCleaning module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>segments</strong> (<em>dict</em><em>(</em><em>int</em><em>, </em><em>str</em><em>)</em>) – Raw segments of text.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Clean segments.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(int, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.convertLabels">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">convertLabels</code><span class="sig-paren">(</span><em class="sig-param">labels</em>, <em class="sig-param">classes</em>, <em class="sig-param">binary=False</em>, <em class="sig-param">refClass=None</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.convertLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>convertLabels</p>
+<p>Convert the string label to numerical one.
+Binary = if different than one class
+refClass = list of reference classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>str</em><em>)</em>) – Dictionnary of raw annotation to convert per segment id.</p></li>
+<li><p><strong>classes</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – List of all known classes in the domain.</p></li>
+<li><p><strong>Binary</strong> – Convert label into 1 and 0 values, 1 meaning the label</p></li>
+</ul>
+</dd>
+</dl>
+<p>matches the reference class, 0 otherwise. The reference classes are provided
+or, by default, is the first class in the ‘classes’ array.
+:type Binary: bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>refClass</strong> – Reference classes that are to be converted, while the</p>
+</dd>
+</dl>
+<p>other ones are ignored.
+:type refClass: list(str)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of label/class as numerical values.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict(str, int)</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Mapping between textual and numerical labels.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict(str, int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.transform">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">transformer='count'</em>, <em class="sig-param">oversample=False</em>, <em class="sig-param">trasnformSerial='Models\vectorizer.pickle'</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>transform</p>
+<p>Transform a set of textual segments into features.
+It offer multiple feature extraction techniques and can oversample the
+data set classicaly or geneticaly (see TextGeneticOversampler module).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – Raw segments of text.</p></li>
+<li><p><strong>labels</strong> – List of raw annotation associated to each segment.</p></li>
+<li><p><strong>transformer</strong> (<em>str</em>) – Feature extraction tool to use:
+- ‘count’ or ‘bow’ (default): standard BOW using sklearn.CountVectorizer.
+- ‘tfidf’ or ‘tf-idf’: TF-IDF feature extraction through
+sklearn.TfidfVectorizer.
+- ‘hash’:  Uses sklearn.HashingVectorizer
+- ‘doc2vec’: DL doc2vec approach provided by Gensim.</p></li>
+<li><p><strong>oversample</strong> (<em>bool</em>) – Assert if oversample should be performed or not.</p></li>
+<li><p><strong>trasnformSerial</strong> (<em>str</em><em> (</em><em>filepath</em><em>)</em>) – Transform process export path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of data of training (x_train)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of label of training (y_train)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of data of testing (x_test)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of label of testing (y_test)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.transformBOW">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">transformBOW</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">segments_test=None</em>, <em class="sig-param">labels_test=None</em>, <em class="sig-param">serialPath='Models\vectorizer.pickle'</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.transformBOW" title="Permalink to this definition">¶</a></dt>
+<dd><p>transformBOW</p>
+<p>Apply feature extraction with sklearn.CountVectorizer.
+It relies on char_wb and an ngram range of [4,5].
+.. todo:: Adapt parameter in the AutoML process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>np.array</em>) – Raw segments of text.</p></li>
+<li><p><strong>labels</strong> (<em>np.array</em>) – List of raw annotation associated to each segment.</p></li>
+<li><p><strong>serialPath</strong> (<em>str</em><em> (</em><em>filepath</em><em>)</em>) – Transform process export path.</p></li>
+<li><p><strong>segments_test</strong> (<em>np.array</em>) – Test segments to transform.</p></li>
+<li><p><strong>labels_test</strong> (<em>np.array</em>) – List of labels on the test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of data of training (x_train)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of label of training (y_train)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of data of testing (x_test)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of label of testing (y_test)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.transformHashing">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">transformHashing</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">segments_test=None</em>, <em class="sig-param">labels_test=None</em>, <em class="sig-param">serialPath='Models\vectorizer.pickle'</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.transformHashing" title="Permalink to this definition">¶</a></dt>
+<dd><p>transformHashing</p>
+<p>Apply feature extraction with sklearn.HashingVectorizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>np.array</em>) – Raw segments of text.</p></li>
+<li><p><strong>labels</strong> (<em>np.array</em>) – List of raw annotation associated to each segment.</p></li>
+<li><p><strong>serialPath</strong> (<em>str</em><em> (</em><em>filepath</em><em>)</em>) – Transform process export path.</p></li>
+<li><p><strong>segments_test</strong> (<em>np.array</em>) – Test segments to transform.</p></li>
+<li><p><strong>labels_test</strong> (<em>np.array</em>) – List of labels on the test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of data of training (x_train)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of label of training (y_train)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of data of testing (x_test)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of label of testing (y_test)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.transformTFIDF">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">transformTFIDF</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">segments_test=None</em>, <em class="sig-param">labels_test=None</em>, <em class="sig-param">serialPath='Models\vectorizer.pickle'</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.transformTFIDF" title="Permalink to this definition">¶</a></dt>
+<dd><p>transformTFIDF</p>
+<p>Apply feature extraction with sklearn.TfidfVectorizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>np.array</em>) – Raw segments of text.</p></li>
+<li><p><strong>labels</strong> (<em>np.array</em>) – List of raw annotation associated to each segment.</p></li>
+<li><p><strong>serialPath</strong> (<em>str</em><em> (</em><em>filepath</em><em>)</em>) – Transform process export path.</p></li>
+<li><p><strong>segments_test</strong> (<em>np.array</em>) – Test segments to transform.</p></li>
+<li><p><strong>labels_test</strong> (<em>np.array</em>) – List of labels on the test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of data of training (x_train)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of label of training (y_train)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of data of testing (x_test)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of label of testing (y_test)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.transformDoc2Vec">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">transformDoc2Vec</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">segments_test=None</em>, <em class="sig-param">labels_test=None</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.transformDoc2Vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>transformDoc2Vec</p>
+<p>Apply feature extraction with gensim.Doc2Vec.
+Be aware that this process is heavy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>np.array</em>) – Raw segments of text.</p></li>
+<li><p><strong>labels</strong> (<em>np.array</em>) – List of raw annotation associated to each segment.</p></li>
+<li><p><strong>segments_test</strong> (<em>np.array</em>) – Test segments to transform.</p></li>
+<li><p><strong>labels_test</strong> (<em>np.array</em>) – List of labels on the test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of data of training (x_train)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of label of training (y_train)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of data of testing (x_test)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of label of testing (y_test)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.oversampling">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">oversampling</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em>, <em class="sig-param">random=0</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.oversampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>oversampling</p>
+<p>Oversample datasets (already transformed)
+The resulting size of each class set is almost equal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>np.array</em>) – Data to oversample.</p></li>
+<li><p><strong>Y</strong> (<em>np.array</em>) – Labels associated to the data.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.classFilter">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">classFilter</code><span class="sig-paren">(</span><em class="sig-param">segments</em>, <em class="sig-param">labels</em>, <em class="sig-param">classes</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.classFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>classFilter</p>
+<p>Filter the dataset with only selected classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<em>dict</em><em>(</em><em>int</em><em>, </em><em>str</em><em>)</em>) – Segments of text to filter.</p></li>
+<li><p><strong>labels</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>str</em><em>)</em>) – Dictionnary of raw annotation to convert per segment id.</p></li>
+<li><p><strong>classes</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – List of all accepted class.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Filtered set of segments of text.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(int, str)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Filtered labels.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict(str, str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.debug_tsne_plot">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">debug_tsne_plot</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.debug_tsne_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>debug_tsne_plot</p>
+<p>Creates and TSNE model and plots it.
+Used for deub/experiments.
+From <a class="reference external" href="https://www.kaggle.com/jeffd23/visualizing-word-vectors-with-t-sne">https://www.kaggle.com/jeffd23/visualizing-word-vectors-with-t-sne</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.display_scores">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">display_scores</code><span class="sig-paren">(</span><em class="sig-param">vectorizer</em>, <em class="sig-param">tfidf_result</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.display_scores" title="Permalink to this definition">¶</a></dt>
+<dd><p>display_scores</p>
+<p>Debug function.
+<a class="reference external" href="http://stackoverflow.com/questions/16078015/">http://stackoverflow.com/questions/16078015/</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.prepareData">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">prepareData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.prepareData" title="Permalink to this definition">¶</a></dt>
+<dd><p>prepareData</p>
+<p>Load, clean and transform a dataset from a fixed location
+It povides the data and annotation ready to be processed my ML tools.
+Not used anaymore.
+.. todo:: Perform data load from a database and a selected domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of data of training (x_train)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of label of training (y_train)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of data of testing (x_test)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of label of testing (y_test)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.prepareDataIly">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">prepareDataIly</code><span class="sig-paren">(</span><em class="sig-param">labelType, labelLevel, granularity=0, filter=[[[], [], []], [[], []]], labelBinary=False, labelClasses=None, oversample=False, transformer='count', datasetFolder='C:\Users\Nara\Workspace\datasets\Contrats\datasetSentence2', trasnformSerial='Models\vectorizer.pickle', mappingExport=None</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.prepareDataIly" title="Permalink to this definition">¶</a></dt>
+<dd><p>prepareDataIly</p>
+<p>Load, clean and transform Ilyeum contract dataset?
+It povides the data and annotation ready to be processed my ML tools.
+.. todo:: Perform data load from a database and a selected domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of data of training (x_train)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of label of training (y_train)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of data of testing (x_test)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Set of label of testing (y_test)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="DataPreparation.preparationReport">
+<code class="sig-prename descclassname">DataPreparation.</code><code class="sig-name descname">preparationReport</code><span class="sig-paren">(</span><em class="sig-param">labelType</em>, <em class="sig-param">labelLevel</em>, <em class="sig-param">granularity</em>, <em class="sig-param">filter</em>, <em class="sig-param">labelBinary</em>, <em class="sig-param">labelClasses</em>, <em class="sig-param">oversample</em>, <em class="sig-param">datasetFolder</em>, <em class="sig-param">classes</em>, <em class="sig-param">labels</em>, <em class="sig-param">x_train</em>, <em class="sig-param">x_test</em>, <em class="sig-param">y_train</em>, <em class="sig-param">y_test</em>, <em class="sig-param">mapping</em>, <em class="sig-param">transformer</em><span class="sig-paren">)</span><a class="headerlink" href="#DataPreparation.preparationReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>preparationReport</p>
+<p>Generate a string report of the data preparation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Report of preparation of data.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Iyeum Lab
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

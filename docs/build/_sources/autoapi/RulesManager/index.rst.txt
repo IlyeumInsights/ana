@@ -1,0 +1,91 @@
+:mod:`RulesManager`
+===================
+
+.. py:module:: RulesManager
+
+.. autoapi-nested-parse::
+
+   module RulesManager
+
+   Load rules as dictionnary and analyze them (it does no evaluate them for now).
+   Rule based evaluation, based on a KB, is a perspective.
+
+   Class
+       RulesManager
+
+
+
+Module Contents
+---------------
+
+.. py:class:: RulesManager(rulesPath='rules\\politics.swrl')
+
+   class RulesManager
+
+   Load a set of SWRL rules that represent policies, and analyzes them.
+   Rules are stored in a file provided (path) to the constructor.
+
+   :param rules: The set of rules reprensented as dictionnary that associates
+   identifier (policy name) to an actual rule.
+   :type rules: dict(str, str)
+
+   .. method:: loadRules(self, rulesPath)
+
+
+      loadRules
+
+      Load a set of rules from a SWRL file.
+
+      :param rulesPath: Path to the SWRL file.
+      :type rulesPath: str (filePath)
+
+
+   .. method:: gatherClass(self)
+
+
+      gatherClass
+
+      Gather the classes mentionned in the rules
+
+      :return: The classes indentified in the rules.
+      :rtype: list(str)
+
+
+   .. method:: getPoliticsOfClass(self, clauseType)
+
+
+      getPoliticsOfClass
+
+      Gather the policies related to one clause type according to the rules.
+
+      :param clauseType: Type of clause.
+      :type clauseType: str
+
+      :return: Policies related to the given clause type
+      :rtype: list(str)
+
+
+   .. method:: politicAppliesToSentence(self, politic)
+
+
+      politicAppliesToSentence
+
+      Assert if a politic can be applied to a sentence or a complete clause.
+      If true, classifier can be applied on sentences extraced from clause.
+      To evaluate this assertion, rules predicate are reviewed.
+      For now, predicate compatible with sentences are hard coded
+      By default: False
+
+      :param politic: Policy to check. (TODO rename)
+      :type politic: str
+      :return: True is the policy applies to a sentence, False if it applies
+      to a full clause, defaults to False.
+      :rtype: bool
+
+
+
+.. data:: rm
+   
+
+   
+

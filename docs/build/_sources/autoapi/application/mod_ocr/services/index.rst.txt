@@ -1,0 +1,43 @@
+:mod:`application.mod_ocr.services`
+===================================
+
+.. py:module:: application.mod_ocr.services
+
+
+Module Contents
+---------------
+
+.. data:: EXPORT_FOLDER
+   
+
+   
+
+.. data:: EXPORT_FILE
+   
+
+   
+
+.. function:: createFilePath(file)
+
+
+.. function:: extractTextFromImage(path)
+
+   Part #1 : Converting PDF to images 
+
+
+.. function:: extractSections()
+
+
+.. function:: detectReccuringLines(text, nbpage, thresSimilarity=0.66, thresPage=0.5)
+
+   Identify and count similar lines of a text.
+
+
+.. function:: removeLines(text, linesToRem, thresSimilarity=0.66)
+
+   Remove given lines from a text.
+
+
+.. function:: removeReccuringLines(text, nbpage)
+
+

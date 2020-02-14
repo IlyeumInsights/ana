@@ -1,0 +1,118 @@
+:mod:`PipelineTraining`
+=======================
+
+.. py:module:: PipelineTraining
+
+.. autoapi-nested-parse::
+
+   module PipelineTraining
+
+   Train several pipelines according to multiple provided configurations.
+   That is to say that it trains a possible ensemble classifier.
+   .. todo:: Use MLflow to track the model trained.
+
+
+
+Module Contents
+---------------
+
+.. function:: generateClassifReport(y_test, y_pred)
+
+   generateClassifReport
+
+   Generate a report of the classifier performance based on its outputs and
+   reference (test) labels.
+
+   :param y_test: Expected labels.
+   :type y_test: np.array
+   :param y_pred: Predicted labels.
+   :type y_pred: np.array
+   :return: The human readable report.
+   :rtype: str
+
+
+.. function:: trainClassifier(config, path, classifierName, automl=False)
+
+   trainClassifier
+
+   Trains a classifier for a single configuration.
+
+   :param config: Classifier configuration
+   :type config: list(any)
+   :param path: Location of classifier export.
+   :type path: str (dirPath)
+   :param classifierName: Name of the classifier that will be used to name the
+   exported file.
+   :type classifierName: str
+   :param automl: Assert if single model AutoML (TPOT) should be used, 
+   defaults to False.
+   :type automl: bool, optional
+   :return: The trained model
+   :rtype: sklearn.model
+
+
+.. function:: trainPipeline(configs, path, automl=True)
+
+   trainPipeline
+
+   Generate multiple classifier as part of the pipeline as well as voting
+   procedure.
+
+   :param configs: Configurations of all subclassifiers
+   :type configs: list(list(any))
+   :param path: Destination for the export of models
+   :type path: str (dirPath)
+   :param automl: Assert if AutoML should be used, defaults to True
+   :type automl: bool, optional
+
+
+.. function:: evaluatePipeline(path, nbconf, config, voteSent=None, voteClause=None, voteMode=None)
+
+   evaluatePipeline
+
+   Evaluate the quality of classification of a pipeline by loading a part of
+   the dataset.
+
+   :param path: Directory containing the models of the pipeline.
+   :type path: str (dirPath)
+   :param nbconf: Number of configurations considered.
+   :type nbconf: int
+   :param config: Configurations, contraining information to load the dataset.
+   :type config: list(any)
+   :param voteSent: Default election element at sentence level,
+   defaults to None
+   :type voteSent: str, optional
+   :param voteClause: Default election element at clause level,
+   defaults to None
+   :type voteClause: str, optional
+   :param voteMode: Type of election performed on clause (to aggregate
+   outputs of models), defaults to None
+   :type voteMode: str, optional
+
+   :return: Achieved f1_score
+   :rtype: float
+   :return: Expected values
+   :rtype: np.array
+   :return: Predicted values
+   :rtype: np.array
+
+
+.. function:: evaluatePipelineDebug(path, nbconf)
+
+   evaluatePipelineDebug
+
+   Pipeline evaluation for ML conception and debugging.
+
+   :param path: Directory containing the models of the pipeline.
+   :type path: str (dirPath)
+   :param nbconf: Number of configurations considered.
+   :type nbconf: int
+   :return: Achieved f1_score
+   :rtype: float
+
+
+.. data:: configs
+   :annotation: = []
+
+   
+

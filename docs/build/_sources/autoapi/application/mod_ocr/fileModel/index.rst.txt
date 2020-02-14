@@ -1,0 +1,16 @@
+:mod:`application.mod_ocr.fileModel`
+====================================
+
+.. py:module:: application.mod_ocr.fileModel
+
+
+Module Contents
+---------------
+
+.. py:class:: uploadfile(name, type=None, size=None, not_allowed_msg='')
+
+   .. method:: get_file(self)
+
+
+
+

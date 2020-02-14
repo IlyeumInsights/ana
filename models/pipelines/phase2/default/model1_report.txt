@@ -1,0 +1,62 @@
+
+DATA PREPARATION REPORT: 
+-----
+Data source:        C:\Users\Nara\Workspace\datasets\Contrats\datasetSentence2Train
+Data Granularity:   0
+Label Granularity:  0
+Label classif col:  1
+Label classif cla:  ['None', 'R1', 'R2', 'R3', 'R4', 'R5', 'R6', 'R7', 'R8', 'R9', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'R19', 'R20']
+Data selection:     [[[], [], []], [[], []]]
+Selected Transform: tfidf
+Binary classif:     True
+Restricted classif: None
+Genetic oversample: False
+-----
+Labels Mapping: 
+None: -1
+R11: 1
+R12: 1
+R8: 1
+R13: 1
+R9: 1
+R6: 1
+R2: 1
+R4: 1
+R7: 1
+R15: 1
+R20: 1
+R19: 1
+R16: 1
+R3: 1
+R5: 1
+-----
+Initial Y size: 353
+post-transform X train size: 540
+post-transform Y train size: 540
+post-transform X test size:  89
+post-transform Y test size:  89
+-----
+END DATA PREPARATION REPORT. 
+
+-----
+CLASSIFICATION REPORT: 
+Accuracy:88.76%
+              precision    recall  f1-score   support
+
+          -1       0.98      0.87      0.92        67
+           1       0.70      0.95      0.81        22
+
+    accuracy                           0.89        89
+   macro avg       0.84      0.91      0.86        89
+weighted avg       0.91      0.89      0.89        89
+
+Predicted: 
+[ 1 -1 -1  1  1 -1 -1 -1 -1 -1  1 -1 -1 -1  1  1 -1 -1 -1  1  1 -1 -1 -1
+ -1 -1  1 -1 -1 -1 -1 -1 -1  1  1 -1  1 -1 -1 -1  1 -1 -1  1 -1 -1 -1 -1
+  1 -1 -1 -1  1 -1 -1 -1  1  1 -1  1  1  1 -1 -1  1  1 -1  1  1  1 -1 -1
+ -1 -1 -1 -1  1  1 -1 -1  1 -1 -1 -1 -1  1 -1 -1 -1]
+Expected: 
+[-1 -1 -1  1 -1 -1 -1 -1 -1 -1  1 -1 -1 -1  1  1 -1 -1 -1  1 -1 -1 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1  1  1 -1  1 -1 -1 -1 -1 -1 -1  1 -1 -1 -1 -1
+  1 -1 -1 -1  1 -1  1 -1  1 -1 -1  1  1  1 -1 -1 -1  1 -1 -1  1 -1 -1 -1
+ -1 -1 -1 -1  1  1 -1 -1  1 -1 -1 -1 -1  1 -1 -1 -1]

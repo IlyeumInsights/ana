@@ -1,0 +1,23 @@
+:mod:`application`
+==================
+
+.. py:module:: application
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   mod_ocr/index.rst
+
+
+Package Contents
+----------------
+
+.. data:: app
+   
+
+   
+
