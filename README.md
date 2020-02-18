@@ -9,6 +9,7 @@ ANA is presented in the paper: Toward a Generic AutoML-Based Assistant for Contr
 
 # Documentation
 [![made-with-sphinx-doc](https://img.shields.io/badge/Made%20with-Sphinx-1f425f.svg)](https://www.sphinx-doc.org/)
+
 The documentation can be found in the "docs\build".
 
 # Dependencies
