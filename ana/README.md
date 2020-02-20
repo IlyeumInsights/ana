@@ -1,4 +1,4 @@
-#Structure of the code directory:
+# Structure of the code directory:
 
 * knowledge: Datasets and knowledge management, all code related to data/knowledge acquisition and knowledge before the actual training/evaluation process. Typically, it handles files and database acquisition and access.
 * preparation: Transform the data and get it ready for the training phase.
