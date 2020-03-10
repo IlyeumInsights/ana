@@ -22,6 +22,12 @@
             "type": "python",
             "request": "launch",
             "module": "ana.gui.run"
+        },
+        {
+            "name": "ANA: Experiments",
+            "type": "python",
+            "request": "launch",
+            "module": "ana.experimental.MLxploration"
         }
     ]
 }

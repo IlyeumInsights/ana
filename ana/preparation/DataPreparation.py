@@ -351,7 +351,7 @@ def transformTFIDF(segments, labels, segments_test=None, labels_test=None,
     return vectors, labels, vectors_test, labels_test
 
 
-def transformDoc2Vec(segments, labels, segments_test=None, labels_test=None):
+def transformDoc2Vec(segments, labels, segmentsTest=None, labelsTest=None):
     """transformDoc2Vec
 
     Apply feature extraction with gensim.Doc2Vec.
@@ -363,11 +363,11 @@ def transformDoc2Vec(segments, labels, segments_test=None, labels_test=None):
     :param labels: List of raw annotation associated to each segment.
     :type labels: np.array
 
-    :param segments_test: Test segments to transform.
-    :type segments_test: np.array
+    :param segmentsTest: Test segments to transform.
+    :type segmentsTest: np.array
 
-    :param labels_test: List of labels on the test set.
-    :type labels_test: np.array
+    :param labelsTest: List of labels on the test set.
+    :type labelsTest: np.array
 
     :return:
         - Set of data of training (x_train)
@@ -389,17 +389,18 @@ def transformDoc2Vec(segments, labels, segments_test=None, labels_test=None):
     for segment in segments:
         vectors.append(model.infer_vector(segment.split()))
 
-    vectors_test = None
-    if segments_test is not None and labels_test is not None:
-        vectors_test = []
-        for segment in segments_test:
-            vectors_test.append(model.infer_vector(segment.split()))
-
-    # debug_tsne_plot(model)
+    vectorsTest = None
+    if segmentsTest is not None and labelsTest is not None:
+        vectorsTest = []
+        for segment in segmentsTest:
+            vectorsTest.append(model.infer_vector(segment.split()))
 
     vectors = np.array(vectors)
+    vectorsTest = np.array(vectorsTest)
 
-    return vectors, labels, vectors_test, labels_test
+    debug_tsne_plot(model)
+
+    return vectors, labels, vectorsTest, labelsTest
 
 
 def oversampling(X, Y, random=0):
