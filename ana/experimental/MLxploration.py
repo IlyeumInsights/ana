@@ -21,10 +21,15 @@ from sklearn.pipeline import make_pipeline
 from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score
 from sklearn.metrics import classification_report
 
+from gensim.models.doc2vec import Doc2Vec, TaggedDocument
+
 import pandas as pd
 
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pickle
+import numpy as np
+import os
 
 from time import gmtime, strftime
 
@@ -32,6 +37,9 @@ import mlflow
 import mlflow.sklearn
 
 from ana.preparation import DataPreparation
+from ana.preparation import DataSelection
+from ana.preparation import DataCleaning
+from ana import Settings
 
 
 
@@ -46,7 +54,7 @@ def explorationProcess():
 
     currentTime = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
 
-    expeName = "Comparison_resi_only__"+currentTime
+    expeName = "Gamma_paiement_clause__"+currentTime
 
     mlflow.set_experiment(expeName)
 
@@ -57,12 +65,64 @@ def explorationProcess():
 
     for fe in fes:
 
-        x_train, x_test, y_train, y_test, dataprepReport = DataPreparation.prepareDataIly(1, 0,
-            granularity=1,
+        x_train, _, y_train, _, _ = DataPreparation.prepareDataIly(
+            1, 
+            0,
+            granularity=0,
             filter=[ [ [], [], ["paiement"] ], [ [], [] ] ],
-            labelBinary=True,
+            labelBinary=False,
             oversample=False,
-            transformer=fe)
+            transformer=fe,
+            datasetFolder=Settings.TRAIN_DATASET_LOC,
+            mappingExport=Settings.MODEL_MAP_DEFAULT)
+
+        X, Y = DataSelection.loadData(
+            [0,1], 
+            filter=[ [ [], [], ["paiement"] ], [ [], [] ] ], 
+            granularity=0, 
+            datasetFolder=Settings.TEST_DATASET_LOC)
+
+        fX = []
+        for id in X:
+            fX.append(DataCleaning.clean(X[id]))
+        X = np.array(fX)
+
+
+        if fe != "doc2vec":
+            vectorizer = pickle.load(open(Settings.MODEL_VECT_DEFAULT, "rb"))
+            x_test = vectorizer.transform(X)
+        else:
+            # vectorizer = pickle.load(open( os.path.join(Settings.MODEL_DEST, "d2v.model"), "rb") )
+            vectorizer = Doc2Vec.load(os.path.join(Settings.MODEL_DEST, "d2v.model"))
+            x_test = []
+            for text in X:
+                x_test.append(vectorizer.infer_vector(text.split()))
+            x_test = np.array(x_test)
+
+        mapping = pickle.load(open(Settings.MODEL_MAP_DEFAULT, "rb"))
+       
+    
+        expeVal = []
+        for id in Y:
+            if Y[id] in mapping:
+                expeVal.append(mapping[Y[id]]) # mapping in range
+            else:
+                print("Unknown class"+str(Y[id]))
+                expeVal.append(1)
+        y_test = np.array(expeVal)
+ 
+        # x_train, x_test, y_train, y_test, _ = DataPreparation.prepareDataIly(
+        #     1, 
+        #     0,
+        #     granularity=0,
+        #     filter=[ [ [], [], [] ], [ [], [] ] ],
+        #     labelBinary=False,
+        #     oversample=False,
+        #     transformer=fe,
+        #     datasetFolder=Settings.MAIN_DATASET_LOC)
+
+
+
 
         for classifier in mlc:
 
@@ -90,7 +150,7 @@ def explorationProcess():
                 elif classifier == "knc":
                     mlmodel = make_pipeline(
                         SelectPercentile(score_func=f_classif, percentile=45),
-                        KNeighborsClassifier(n_neighbors=91, p=1, weights="distance")
+                        KNeighborsClassifier(n_neighbors=50, p=1, weights="distance")
                     )
                 elif classifier == "ann":
                     if fe != "hash":
@@ -120,9 +180,9 @@ def explorationProcess():
                 print(classification_report(y_test, y_pred))
 
                 acc = accuracy_score(y_test, y_pred)
-                pre = precision_score(y_test, y_pred)
-                rec = recall_score(y_test, y_pred)
-                f1 = f1_score(y_test, y_pred)
+                pre = precision_score(y_test, y_pred, average="macro")
+                rec = recall_score(y_test, y_pred, average="macro")
+                f1 = f1_score(y_test, y_pred, average="macro")
 
                 mlflow.log_metric("A", acc)
                 mlflow.log_metric("P", pre)
@@ -153,8 +213,9 @@ def explorationProcess():
     df.to_csv(csvHeatM)
 
     # g = sns.catplot(x='Feature Extraction', y='Value', hue='Metric', row='Classifier', data=dfb, legend=True, kind="bar")
-    g = sns.FacetGrid(dfb, row="Classifier", col="Feature Extraction", margin_titles=True, )
-    g.map(sns.barplot, "Metric", "Value", palette='Set1')
+    g = sns.FacetGrid(dfb, row="Classifier", col="Feature Extraction", margin_titles=True )
+    g.set(ylim=(0.0, 1.0))
+    g = (g.map(sns.barplot, "Metric", "Value", palette='Set1')).add_legend()
     # for ax in g.axes.flatten():
     #     ax.set_ylabel('')
     #     ax.set_xlabel('')
@@ -164,16 +225,16 @@ def explorationProcess():
     g.savefig(pngFacet)
 
     df2 = df.pivot("Feature Extraction", "Classifier", "F1")
-    ax = sns.heatmap(df2, annot=True, vmin=0.5, vmax=1)
+    ax = sns.heatmap(df2, annot=True, vmin=0.0, vmax=1)
 
     plt.show()
     pngHeatM = f"mlruns\\data\\"+expeName+"_dfh.png"
-    ax.savefig(pngHeatM)
+    # ax.savefig(pngHeatM)
 
-    mlflow.log_artifact(csvFacet)
-    mlflow.log_artifact(pngFacet)
-    mlflow.log_artifact(csvHeatM)
-    mlflow.log_artifact(pngHeatM)
+    # mlflow.log_artifact(csvFacet)
+    # mlflow.log_artifact(pngFacet)
+    # mlflow.log_artifact(csvHeatM)
+    # mlflow.log_artifact(pngHeatM)
 
 
 if __name__ == '__main__':

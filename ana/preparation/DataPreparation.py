@@ -188,7 +188,8 @@ def transform(segments, labels, transformer="count", oversample=False,
     nglab = np.array(nplablist)
     
     # Separate test and train (work on numpy, can only nbe performed in tansform)
-    npseg_train, npseg_test, nglab_train, nglab_test = train_test_split(npseg, nglab, test_size = 0.25, random_state = 1)
+    # Default test_size = 0.25
+    npseg_train, npseg_test, nglab_train, nglab_test = train_test_split(npseg, nglab, test_size=0.25, random_state=1)
 
     # Debug when split is perfomred manually beforehand
     npseg_train = npseg
