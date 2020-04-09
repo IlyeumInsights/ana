@@ -24,6 +24,12 @@
             "module": "ana.gui.run"
         },
         {
+            "name": "ANA: Rest",
+            "type": "python",
+            "request": "launch",
+            "module": "ana.rest.RestServer"
+        },
+        {
             "name": "ANA: Experiments",
             "type": "python",
             "request": "launch",
