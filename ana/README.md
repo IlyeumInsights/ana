@@ -5,4 +5,5 @@
 * training*: Perform the models trainings based on transformed data.
 * evaluation*: Evaluate a clause based on the previously trained models.
 * utils: Support and transversal functionnalities.
+* rest*: Flask-based REST API server.
 * experimental: Code used to experiment and try stuff.
