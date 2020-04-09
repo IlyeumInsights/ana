@@ -256,6 +256,7 @@ def transformBOW(segments, labels, segments_test=None, labels_test=None,
     
     vectorizer = CountVectorizer(min_df=1, analyzer='char_wb', ngram_range=(4, 5))
     # vectorizer = CountVectorizer(min_df=1, vocabulary=textVocabPay)
+    # vectorizer = CountVectorizer(min_df=1)
     vectors = []
     vectors = vectorizer.fit_transform(segments)
     pickle.dump(vectorizer, open(serialPath, "wb"))
@@ -265,6 +266,7 @@ def transformBOW(segments, labels, segments_test=None, labels_test=None,
         vectors_test = vectorizer.transform(segments_test)
 
     # logging.debug(vectorizer.get_feature_names())
+    display_scores(vectorizer, vectors)
 
     return vectors, labels, vectors_test, labels_test
 
@@ -347,7 +349,7 @@ def transformTFIDF(segments, labels, segments_test=None, labels_test=None,
     if segments_test is not None and labels_test is not None:
         vectors_test = vectorizer.transform(segments_test)
 
-    # display_scores(vectorizer, vectors)
+    display_scores(vectorizer, vectors)
 
     return vectors, labels, vectors_test, labels_test
 

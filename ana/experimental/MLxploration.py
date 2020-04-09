@@ -30,6 +30,7 @@ import matplotlib.pyplot as plt
 import pickle
 import numpy as np
 import os
+import logging
 
 from time import gmtime, strftime
 
@@ -45,16 +46,16 @@ from ana import Settings
 
 def explorationProcess():
 
-    fes = ["bow", "tfidf", "hash", "doc2vec"]
-    mlc = ["lr", "ber", "lsvm", "svm", "rf", "knc", "ann"]
-    # fes = ["bow", "tfidf"]
-    # mlc = ["ann", "ber", "svm"]
+    # fes = ["bow", "tfidf", "hash", "doc2vec"]
+    # mlc = ["lr", "ber", "lsvm", "svm", "rf", "knc", "ann"]
+    fes = ["tfidf"]
+    mlc = ["svm"]
 
     verbose = True
 
     currentTime = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
 
-    expeName = "Gamma_paiement_clause__"+currentTime
+    expeName = "bow_clause__"+currentTime
 
     mlflow.set_experiment(expeName)
 
@@ -238,4 +239,7 @@ def explorationProcess():
 
 
 if __name__ == '__main__':
+    logging.basicConfig(format='%(asctime)s %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
+    datefmt='%Y-%m-%d:%H:%M:%S',
+    level=logging.DEBUG)
     explorationProcess()
