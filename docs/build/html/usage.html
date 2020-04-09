@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Usage &mdash; ANA 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Project Structure" href="code.html" />
+    <link rel="prev" title="ANA Process" href="process.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ANA
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">ANA Process</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#training">Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classification">Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rest-api">REST API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ANA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>How to use/run ANA ?</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Python dependencies:</p>
+<ul class="simple">
+<li><p>numpy</p></li>
+<li><p>pickle</p></li>
+<li><p>sklearn (<a class="reference external" href="https://scikit-learn.org/stable/">https://scikit-learn.org/stable/</a>)</p></li>
+<li><p>tpot (<a class="reference external" href="https://epistasislab.github.io/tpot/">https://epistasislab.github.io/tpot/</a>)</p></li>
+<li><p>gensim (<a class="reference external" href="https://radimrehurek.com/gensim/">https://radimrehurek.com/gensim/</a>)</p></li>
+<li><p>pymongo (WIP)</p></li>
+</ul>
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<p>ANA requires textual and annotated data samples.
+ANA considers dataset with the following structures:</p>
+<ul class="simple">
+<li><p><strong>texts</strong> folder: contains raw text per identifier.</p></li>
+<li><p><strong>clauseClasses.csv</strong>: contains the labels associated to clause granules.</p></li>
+<li><p><strong>sentClasses.csv</strong>: contains the labels associated to sentence granules.</p></li>
+<li><p><strong>clauseProp.csv</strong>: informative document containing titles and original
+contract of clauses.</p></li>
+</ul>
+<p>Each sample is associated to an identifier for each granularity.
+The identifier consists of a set of descending integer (from higher granularity
+to more specific ones) concatenated with underscores.
+For example, if we consider granularities A&gt;B&gt;C, identifier are structured as:
+<em>idA_idB_idC</em>.
+In ANA experiments, we used clauses and sentences, and consequently used
+identifier such as: <em>0005_001</em>, refering to sentence 1 in clause 5.
+Text files are named <em>identifier.txt</em>. The annotation csv files are tables
+with the identifier in the first column, and the labels in the others.
+Multiple labels can be considered at once, for each granularity.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>The annotations files should be automacally named according to the
+granularity level.</p>
+</div>
+<p>Such dataset can be provided manually, yet, the <em>annotation</em> folder in the
+project provides a tool to annotate texts (from pdf) and generates such
+documents. Note that this tool was used to preliminar annotation in early stages
+of ANA.
+This tool load a directory of containing subfolder containing contracts and
+remarks.</p>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Discuss the knowledge folder.</p>
+</div>
+</div>
+<div class="section" id="training">
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
+<p>How to train each phase ?
+The code for training (thus generating ensemble classifiers) can be find in the
+package <em>training</em>. The module <em>GlobalTraining</em> is the one to be called.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ana</span>\<span class="n">training</span>\<span class="n">GlobalTraining</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Running <em>GlobalTraining</em> calls three functions, one per phase:
+<em>generatePhaseOnePipeline</em>, <em>generatePhaseTwoPipeline</em> and
+<em>generatePhaseThreePipeline</em> (1, 2 and 3 respectively correspond to
+<span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span>).
+Comment/uncomment the phases that are to be trained or not.
+Generated models are exported in the model folder and used by the classification
+process.
+Note that the dataset location is set in preparation modules.</p>
+</div>
+<div class="section" id="classification">
+<h2>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
+<p>Clause classificatrion is performed by the <em>ClauseAnalyzer</em> module in
+package <em>evaluation</em>.
+It uses the generated models to classify one clause.
+An evaluation process uses a test set to compute the overall performance of ANA.</p>
+<p>The evaluation process is executed when running <em>ClauseAnalyzer</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ana</span>\<span class="n">evaluation</span>\<span class="n">ClauseAnalyzer</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>To analyse one clause, the function <em>analyzeClause</em> can be called:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">,</span> <span class="n">isAnom</span><span class="p">,</span> <span class="n">anomType</span> <span class="o">=</span> <span class="n">analyzeClause</span><span class="p">(</span><span class="n">clause</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It provides the infered type of the clause, the abnormality of the clause, and
+the type of anomaly (violated policies).</p>
+</div>
+<div class="section" id="rest-api">
+<h2>REST API<a class="headerlink" href="#rest-api" title="Permalink to this headline">¶</a></h2>
+<p>ANA can be accessed through a REST API provided by the <em>RestServer</em> module
+in the package <em>rest</em>.
+Once the server is started, by running <em>RestServer</em>, the API can be accessed.
+Here is a Python example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://127.0.0.1:5000/api/classsify&quot;</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s2">&quot;Test Clause&quot;</span><span class="p">,</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s2">&quot;This is a sample text to classify.&quot;</span><span class="p">,</span>
+    <span class="s1">&#39;domain&#39;</span><span class="p">:</span> <span class="s2">&quot;Testing contracts&quot;</span>
+<span class="p">}</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">obj</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="code.html" class="btn btn-neutral float-right" title="Project Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="process.html" class="btn btn-neutral float-left" title="ANA Process" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Iyeum
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
