@@ -59,10 +59,10 @@ def classifyText():
             'title': message['title'],
             'type': str(cType),
             'anomalous': str(isAnom),
-            'anomaly': str(aType)
+            'anomaly': aType
         }
         return jsonify(answer), 201
 
 
 if __name__ == '__main__':
-    APP.run(debug=True)
+    APP.run(debug=True, port=int("5555"))
