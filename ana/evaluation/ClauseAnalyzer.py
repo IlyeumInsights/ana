@@ -347,6 +347,121 @@ def analyzeClause(clause, clauseTitle=None):
     logging.info("--- End of clause evaluation process ---")
     return clauseType, isAnom, anomType
 
+
+def analyzeClauseAlpha(clause, clauseTitle=None):
+    """analyzeClauseAlpha
+
+    Alpha function of clause analysis.
+    Performs the phase 1 of analysis (phase 1 to 3) of a clause.
+    It determines the type of the clause (phase 1).
+
+    :param clause: The textual clause.
+    :type clause: str
+    :param clauseTitle: The title of the clause, that is used for key word
+        search, defaults to 'None'.
+    :type clauseTitle: str
+
+    :return: The inferred type of the clause (str)
+    """
+    logging.info("--- Entering alpha evaluation process of clause: ---")
+    logging.info(clause)
+
+    clause = DataCleaning.clean(clause)
+
+    clauseType = evaluatePhaseOne(clause, clauseTitle=clauseTitle)
+
+    logging.info("Inferred clause type: "+str(clauseType))
+
+    return clauseType
+
+
+def analyzeClauseBeta(clause, clauseType):
+    """analyzeClauseBeta
+
+    Beata function of clause analysis.
+    Performs the phase 2 of the analysis of the clause.
+    According to the clause type, determines if the clause is
+    anomalous or correct.
+
+    :param clause: The textual clause.
+    :type clause: str
+    :param clausetype: The type of the clause, infered from phase 1 or given.
+    :type clauseTitle: str
+
+    :return: True if the clause is detected as anomalous, False otherwise (bool).
+
+    """
+
+    logging.info("--- Entering beta evaluation process of clause: ---")
+    logging.info(clause)
+
+    clause = DataCleaning.clean(clause)
+
+    isAnom = evaluatePhaseTwo(clause, clauseType)
+
+    return isAnom
+
+
+def analyzeClauseGamma(clause, clauseType):
+    """analyzeClauseGamma
+
+    Gamma function of clause analysis.
+    Performs the phase 3 of analysis of a clause.
+    The clause is supposed anomalous, this function infers
+    the violated policies, thus explaining the rejection of the clause.
+
+    :param clause: The textual clause.
+    :type clause: str
+    :param clausetype: The type of the clause, infered from phase 1 or given.
+    :type clauseTitle: str
+
+    :return: List of inferred violted policies (list(str)).
+    """
+
+    logging.info("--- Entering beta evaluation process of clause: ---")
+    logging.info(clause)
+
+    clause = DataCleaning.clean(clause)
+
+    anomTypes = evaluatePhaseThree(clause, clauseType)
+
+    return anomTypes
+
+def analyzeClauseBetaGamma(clause, clauseType):
+    """analyzeClauseBetaGamma
+
+    Beta and gamma function of clause analysis.
+    Performs the phase 2 and 3 of analysis of a clause.
+    According to the clause type, determines if the clause is
+    anomalous or correct.
+    If the clause is detected an anomalous, phase 3 is performed to infer
+    the violated policies, thus explaining the rejection of the clause.
+
+
+    :param clause: The textual clause.
+    :type clause: str
+    :param clausetype: The type of the clause, infered from phase 1 or given.
+    :type clauseTitle: str
+
+    :return:
+        - True if the clause is detected as anomalous, False otherwise (bool).
+        - List of inferred violted policies (list(str)).
+    """
+    
+    logging.info("--- Entering beta & gamma evaluation process of clause: ---")
+    logging.info(clause)
+
+    clause = DataCleaning.clean(clause)
+
+    isAnom = evaluatePhaseTwo(clause, clauseType)
+
+    anomTypes = None
+
+    if isAnom:
+        anomTypes = evaluatePhaseThree(clause, clauseType)
+
+    return isAnom, anomTypes
+
 def convertLabelToVal(label, classList):
     """convertLabelToVal
 
