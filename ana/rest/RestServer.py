@@ -111,7 +111,7 @@ def dynamicClassifyText():
             cType = message['type']
             isAnom, aType = ClauseAnalyzer.analyzeClauseBetaGamma(message['text'], message['type'])
         # Type and anomalous are provided
-        else: 
+        else:
             logging.info("Performing gamma analysis")
             cType = message['type']
             if message['anomalous'] == "True" or message['anomalous'] == 1:
