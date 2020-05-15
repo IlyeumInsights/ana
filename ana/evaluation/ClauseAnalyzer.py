@@ -447,7 +447,7 @@ def analyzeClauseBetaGamma(clause, clauseType):
         - True if the clause is detected as anomalous, False otherwise (bool).
         - List of inferred violted policies (list(str)).
     """
-    
+
     logging.info("--- Entering beta & gamma evaluation process of clause: ---")
     logging.info(clause)
 
