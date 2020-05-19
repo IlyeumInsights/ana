@@ -1,6 +1,6 @@
 ![ANA](ana_logo.png?raw=true)
 
-# ANA -- AutoML-based Negociation Assistant 
+# AutoML-based Negociation Assistant 
 
 [![Python](https://img.shields.io/badge/Python-3.7.1-blue.svg)](https://www.python.org/downloads/release/python-370/)
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
