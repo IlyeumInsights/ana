@@ -1,3 +1,5 @@
+![ANA](ana_logo.png?raw=true)
+
 # ANA -- AutoML-based Negociation Assistant 
 
 [![Python](https://img.shields.io/badge/Python-3.7.1-blue.svg)](https://www.python.org/downloads/release/python-370/)
