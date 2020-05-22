@@ -138,11 +138,11 @@ def convertDataset(pathDir="", exportDir=""):
             clType = ""
             with open(pathClLabel, 'r') as csvfileLabel:
                 csvReaderLabel = csv.reader(csvfileLabel, delimiter=DELIM)
-                for row in csvReaderLabel:
-                    if row[0] == str(clId):
-                        anom = row[1]
-                        policy = row[2]
-                        clType = row[3]
+                for rowLabel in csvReaderLabel:
+                    if rowLabel[0] == str(clId):
+                        anom = rowLabel[1]
+                        policy = rowLabel[2]
+                        clType = rowLabel[3]
 
             labels = {
                 "invalidity": anom,
