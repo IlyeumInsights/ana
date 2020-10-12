@@ -210,7 +210,7 @@ def evaluatePhaseTwo(clause, clauseType):
     """
     logging.info("Evaluation Phase 2")
 
-    if clauseType is None:
+    if clauseType is None or clauseType == "None":
         clauseType = "default"
 
     phaseTwoDir = os.path.join(Settings.MODEL_PIPELINES, "phase2\\")
@@ -256,7 +256,7 @@ def evaluatePhaseThree(clause, clauseType):
     """
     logging.info("Evaluation Phase 3")
 
-    if clauseType is None:
+    if clauseType is None or clauseType == "None":
         clauseType = "default"
 
     phaseThreeDir = os.path.join(Settings.MODEL_PIPELINES, "phase3\\")

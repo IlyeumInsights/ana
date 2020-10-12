@@ -48,14 +48,14 @@ def explorationProcess():
 
     # fes = ["bow", "tfidf", "hash", "doc2vec"]
     # mlc = ["lr", "ber", "lsvm", "svm", "rf", "knc", "ann"]
-    fes = ["tfidf"]
-    mlc = ["svm"]
+    fes = ["hash"]
+    mlc = ["lsvm"]
 
     verbose = True
 
     currentTime = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
 
-    expeName = "bow_clause__"+currentTime
+    expeName = "beta_all_sent_"+currentTime
 
     mlflow.set_experiment(expeName)
 
@@ -67,19 +67,19 @@ def explorationProcess():
     for fe in fes:
 
         x_train, _, y_train, _, _ = DataPreparation.prepareDataIly(
-            1, 
+            0, 
             0,
             granularity=0,
-            filter=[ [ [], [], ["paiement"] ], [ [], [] ] ],
-            labelBinary=False,
+            filter=[ [ [], [], [] ], [ [], [] ] ],
+            labelBinary=True,
             oversample=False,
             transformer=fe,
             datasetFolder=Settings.TRAIN_DATASET_LOC,
             mappingExport=Settings.MODEL_MAP_DEFAULT)
 
         X, Y = DataSelection.loadData(
-            [0,1], 
-            filter=[ [ [], [], ["paiement"] ], [ [], [] ] ], 
+            [0,0], 
+            filter=[ [ [], [], [] ], [ [], [] ] ], 
             granularity=0, 
             datasetFolder=Settings.TEST_DATASET_LOC)
 

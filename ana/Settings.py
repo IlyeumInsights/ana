@@ -34,6 +34,9 @@ MODEL_DEST = f".\\models\\"
 # Default destination, mainly used for testing and debug
 MODEL_VECT_DEFAULT = MODEL_DEST+f"vectorizer.pickle"
 
+# Default destination of mapping, mainly used for testing and debug
+MODEL_MAP_DEFAULT = MODEL_DEST+f"mapping.pickle"
+
 # Location of pipelines related models in models directory
 MODEL_PIPELINES = MODEL_DEST+f"pipelines\\"
 

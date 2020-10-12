@@ -3,6 +3,7 @@
 Acquires annotated texts (raw or json), stores them in a db and generates
 dataset for the learning phase.
 WIP
+Obsolete
 
 :Authors: Nathan Ramoly
 """

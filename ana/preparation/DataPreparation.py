@@ -266,7 +266,7 @@ def transformBOW(segments, labels, segments_test=None, labels_test=None,
         vectors_test = vectorizer.transform(segments_test)
 
     # logging.debug(vectorizer.get_feature_names())
-    display_scores(vectorizer, vectors)
+    # display_scores(vectorizer, vectors)
 
     return vectors, labels, vectors_test, labels_test
 
@@ -349,7 +349,7 @@ def transformTFIDF(segments, labels, segments_test=None, labels_test=None,
     if segments_test is not None and labels_test is not None:
         vectors_test = vectorizer.transform(segments_test)
 
-    display_scores(vectorizer, vectors)
+    # display_scores(vectorizer, vectors)
 
     return vectors, labels, vectors_test, labels_test
 
