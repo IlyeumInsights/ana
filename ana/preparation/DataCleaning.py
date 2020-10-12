@@ -7,6 +7,7 @@ Carries functions dedicated to data cleaning or text management.
 """
 
 import unidecode
+import text_to_num
 
 def normalizeText(text):
     """normalizeText
@@ -110,3 +111,17 @@ def filterText(text, threshold=3, numbers=True):
     :rtype: str
     """
     return " ".join(filterWords(text.split(), threshold, numbers))
+
+def convertNumber(text, lang="fr"):
+    """convertNumber
+
+    Converts all written numbers into figures.
+    Relies on the text2num library.
+    Example: "sixty cars" -> "60 cars"
+
+    :param text: The text to convert
+    :type text: str
+    :param lang: Language of the text (en, fr or es)
+    :type text: str
+    """
+    text = text_to_num.alpha2digit(text, lang)
