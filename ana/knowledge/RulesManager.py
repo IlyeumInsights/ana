@@ -48,7 +48,6 @@ class RulesManager:
                     self.rules[key].append([antecedent.split("^"), consequent.strip()])
 
 
-
     def gatherClass(self):
         """gatherClass
 
@@ -132,6 +131,31 @@ class RulesManager:
             return res
         else:
             return False
+
+
+def loadRawRules(rulesPath):
+    """loadRawRules
+
+    Read a rules files and extract rules ready to be added in a reasoner.
+
+    :param rulesPath: Path to the SWRL file.
+    :type rulesPath: str (filePath)
+    """
+    ruleList = []
+
+    with open(rulesPath, "r") as rulesFile:
+        for line in rulesFile.readlines():
+            if not line.strip() or line.strip().isspace() or line.strip()[0] == "#":
+                pass
+            else:
+                if ":" in line:
+                    line = line.split(":")[1]
+                line.replace(" ^ ", ", ")
+                ruleList.append(line)
+
+    return ruleList
+
+
 
 
 if __name__ == "__main__":

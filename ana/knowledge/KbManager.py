@@ -8,7 +8,12 @@ Class
     KbManager
 """
 
+import os
 from owlready2 import *
+
+from ana import Settings
+from ana.knowledge.RulesManager import RulesManager, loadRawRules
+from ana.utils import TextractTools
 
 # Ontological structure
 
@@ -23,6 +28,8 @@ with CONTRACT_KB:
         pass
 
     class Text(Thing):
+        """Text in a legal sense. Includes clauses, sentences, etc.
+        """
         pass
     class has_text(Text >> str, FunctionalProperty):
         pass
@@ -55,7 +62,7 @@ with CONTRACT_KB:
         pass
     class has_terms(Concept >> str):
         pass
-    
+
     class Type(Concept):
         pass
     class has_type(Clause >> Type, FunctionalProperty):
@@ -75,24 +82,109 @@ class KbManager:
 
     """
     def __init__(self):
-        self.loadConceptTerms()
+        self.addConcepts()
+        self.loadPolicyRules(Settings.KL_LOC+f"rules\\policies.swrl") # TODO
+        self.loadOntoRules(Settings.KL_ONTO_RULES)
 
     def addRules(self, rules):
-        pass
+        with CONTRACT_KB:
+            for rule in rules:
+                Imp().set_as_rule(rule)
 
-    def loadRules(self, path):
-        """Relies on Rules Manager to load and add rules
+
+    def loadPolicyRules(self, path):
+        """Relies on Rules Manager to load, format and add rules
 
         :param path: [description]
         :type path: [type]
         """
-        pass
+        rman = RulesManager()
+        rules = rman.rules
+
+        formatRules = []
+
+        for policy in rules:
+            Policy(has_id=policy)
+            for rule in rules[policy]:
+                ruleStr = ','.join(rule[0])
+                ruleStr += ", Policy(?p), has_id(?p, '"+str(policy)+"')"
+                ruleStr += " -> "+rule[1]
+                ruleStr += ", violates_policy(?p)"
+                formatRules.append(ruleStr)
+
+        self.addRules(formatRules)
+
+    def loadOntoRules(self, path):
+        rules = loadRawRules(path)
+        self.addRules(rules)
+
+    def addConcepts(self):
+        # Types
+        typesDict = self.loadTypesTerms()
+        for clType in typesDict:
+            newType = Type(has_name=clType)
+            newType.has_terms = typesDict[clType]
+
+        # Concepts
+        concDict = self.loadConceptTerms()
+        for concept in concDict:
+            newConcept = Concept(has_name=concept)
+            newConcept.has_terms = concDict[concept]
 
     def loadConceptTerms(self):
-        pass
+        return self.loadTerms(Settings.KL_VOCAB_CONCEPT)
+
+    def loadTypesTerms(self):
+        return self.loadTerms(Settings.KL_VOCAB)
+
+    def loadTerms(self, vocabPath):
+
+        termDict = {}
+
+        if os.path.isdir(vocabPath):
+            for vocFile in os.listdir(vocabPath):
+                conType = os.path.splitext(vocFile)[0]
+                vocFilePath = os.path.join(vocabPath, vocFile)
+                if os.path.isfile(vocFilePath):
+                    # Access file that is composed of words separated my spaces
+                    with open(vocFilePath, "r") as vocFileReader:
+                        termDict[conType] = vocFileReader.read().split()
+
+        return termDict
+
 
     def reason(self):
-        pass
+        sync_reasoner_pellet(
+            infer_property_values = True,
+            infer_data_property_values = True)
+
 
     def addAndAnalyzeClause(self, clauseTitle, clauseBody):
-        pass
+        clause = Clause(has_title=clauseTitle, has_text=clauseBody)
+
+        # Subtext decompositions
+        sentences = []
+        for sentStr in clauseBody.split("."):
+            
+            newSent = Sentence(has_content=sentStr+".")
+            
+            # Perform sentence analysis
+            d = TextractTools.extractDurationDay(sentStr)
+            if d is not None:
+                newSent.has_duration.append(d)
+
+            sentences.append(newSent)
+
+        clause.has_subtext = sentences
+
+        # Apply reasoning
+        self.reason()
+
+        # Gather result
+        print(clause.has_type)
+        print(clause.is_valid)
+        print(clause.violates_policy)
+
+
+kbm = KbManager()
+kbm.addConcepts()
