@@ -11,6 +11,7 @@ Available constants:
 - MODEL_PIPELINES
 - KL_LOC
 - KL_VOCAB
+- KL_VOCAB_CONCEPT
 - KL_RULES
 - AUTOML_TPOT
 """
@@ -25,8 +26,8 @@ TRAIN_DATASET_LOC = f"datasets\\service_contract_sample"
 TEST_DATASET_LOC = f"datasets\\service_contract_sample"
 
 # Annotation csv files names (ordered by granularity)
-# DATASET_LABEL_FILES = ["clauseClasses.csv", "sentClasses.csv"]
-DATASET_LABEL_FILES = ["clauses_label.csv", "sentences_label.csv"]
+DATASET_LABEL_FILES = ["clauseClasses.csv", "sentClasses.csv"]
+# DATASET_LABEL_FILES = ["clauses_label.csv", "sentences_label.csv"]
 
 # Destination of exported/saved models
 MODEL_DEST = f".\\models\\"
@@ -43,9 +44,13 @@ MODEL_PIPELINES = MODEL_DEST+f"pipelines\\"
 # Knowledge location
 KL_LOC = f"knowledge\\"
 
-KL_VOCAB = KL_LOC+f"vocab\\"
+KL_VOCAB = KL_LOC+f"vocab\\types\\"
+
+KL_VOCAB_CONCEPT = KL_LOC+f"vocab\\concepts\\"
 
 KL_RULES = KL_LOC+f"rules\\policies.swrl"
+
+KL_ONTO_RULES = KL_LOC+f"rules\\ontorules.swrl"
 
 # Activate usage of TPOT AutoML in the ensemble classifier AutoML process
 AUTOML_TPOT = False

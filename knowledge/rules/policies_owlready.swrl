@@ -1,0 +1,9 @@
+# Dummy rule 1
+# R1: Contract(?con) ^ has_clause(?con, ?c) ^ has_type(?c, ?t) ^ has_name(?t, ?n) ^ equals(?n, 'non_sollicitation') ^ Policy(?p) ^ has_id(?p, 'R1') -> respects_policy(?con, ?p)
+
+R2: Policy(?p) ^ has_id(?p, 'R2') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'non_sollicitation') ^ has_duration(?c, ?t) ^ greaterThan(?d, 360) -> violates_policy(?c, ?p)
+
+R11: Policy(?p) ^ has_id(?p, 'R11') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'paiement') ^ has_subtext(?c, ?s) ^ has_concept(?s, ?conc) ^ has_name(?conc, 'cheque') -> violates_policy(?c, ?p)
+R11: Policy(?p) ^ has_id(?p, 'R11') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'paiement') ^ has_subtext(?c, ?s) ^ has_not_concept(?s, ?conc) ^ has_name(?conc, 'virement') -> violates_policy(?c, ?p)
+ 
+R12: Policy(?p) ^ has_id(?p, 'R12') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'paiement') ^ has_duration(?c, ?d) ^ greaterThan(?d, 45) -> violates_policy(?c, ?p)

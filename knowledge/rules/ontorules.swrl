@@ -1,3 +1,5 @@
 Clause(?c) ^ has_title(?c, ?tit) ^ Type(?t) ^ has_terms(?t, ?ter) ^ contains(?tit, ?ter) -> has_type(?c, ?t)
 
 Text(?t) ^ has_subtext(?t, ?st) ^ has_duration(?st, ?d) -> has_duration(?t, ?d)
+
+Clause(?c) ^ violates_policy(?c, ?p) -> is_valid(?c, false)

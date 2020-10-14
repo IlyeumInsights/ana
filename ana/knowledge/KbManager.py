@@ -22,7 +22,7 @@ CONTRACT_KB = get_ontology("http://ilyeum.com/contract.owl")
 with CONTRACT_KB:
     class Policy(Thing):
         pass
-    class has_id(Policy >> str):
+    class has_id(Policy >> str, FunctionalProperty):
         pass
     class has_description(Policy >> str):
         pass
@@ -52,6 +52,8 @@ with CONTRACT_KB:
         pass
     class violates_policy(Clause >> Policy):
         pass
+    class respects_policy(Clause >> Policy):
+        pass
 
     class Sentence(Text):
         pass
@@ -69,6 +71,10 @@ with CONTRACT_KB:
         """TODO
         """
         pass
+    class has_concept(Text >> Concept):
+        pass
+    class has_not_concept(Text >> Concept):
+        pass
 
     class Contract(Thing):
         pass
@@ -83,12 +89,13 @@ class KbManager:
     """
     def __init__(self):
         self.addConcepts()
-        self.loadPolicyRules(Settings.KL_LOC+f"rules\\policies.swrl") # TODO
+        self.loadPolicyRules(Settings.KL_LOC+f"rules\\policies_owlready.swrl") # TODO
         self.loadOntoRules(Settings.KL_ONTO_RULES)
 
     def addRules(self, rules):
         with CONTRACT_KB:
             for rule in rules:
+                print(rule)
                 Imp().set_as_rule(rule)
 
 
@@ -98,7 +105,7 @@ class KbManager:
         :param path: [description]
         :type path: [type]
         """
-        rman = RulesManager()
+        rman = RulesManager(path)
         rules = rman.rules
 
         formatRules = []
@@ -109,7 +116,7 @@ class KbManager:
                 ruleStr = ','.join(rule[0])
                 ruleStr += ", Policy(?p), has_id(?p, '"+str(policy)+"')"
                 ruleStr += " -> "+rule[1]
-                ruleStr += ", violates_policy(?p)"
+                # ruleStr += ", violates_policy(?p)"
                 formatRules.append(ruleStr)
 
         self.addRules(formatRules)
@@ -171,7 +178,11 @@ class KbManager:
             # Perform sentence analysis
             d = TextractTools.extractDurationDay(sentStr)
             if d is not None:
-                newSent.has_duration.append(d)
+                newSent.has_duration = d
+
+            embConcept, nembConcept = self.checkConceptInText(sentStr)
+            newSent.has_concept = embConcept
+            newSent.has_not_concept = nembConcept
 
             sentences.append(newSent)
 
@@ -181,10 +192,26 @@ class KbManager:
         self.reason()
 
         # Gather result
-        print(clause.has_type)
+        print(clause.has_type.has_name)
         print(clause.is_valid)
         print(clause.violates_policy)
 
 
+    def checkConceptInText(self, text):
+        conceptInText = []
+        conceptNotInText = []
+        for concept in Concept.instances():
+            cterms = concept.has_terms
+            if any(term in text.lower() for term in cterms):
+                conceptInText.append(concept)
+            else:
+                conceptNotInText.append(concept)
+        return (conceptInText, conceptNotInText)
+
+
+
+
 kbm = KbManager()
-kbm.addConcepts()
+
+
+kbm.addAndAnalyzeClause("Modalite de paiement", "Le paiement s effectuera par  sous 30 jours")

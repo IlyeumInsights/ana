@@ -150,8 +150,8 @@ def loadRawRules(rulesPath):
             else:
                 if ":" in line:
                     line = line.split(":")[1]
-                line.replace(" ^ ", ", ")
-                ruleList.append(line)
+                line = line.replace(" ^ ", ", ")
+                ruleList.append(line.strip())
 
     return ruleList
 
