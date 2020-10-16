@@ -172,4 +172,4 @@ def convertDataset(pathDir="", exportDir=""):
 
 
 if __name__ == "__main__":
-    convertDataset("", "")
+    convertDataset("C:\\Users\\Nara\\Workspace\\datasets\\Contrats\\datasetSentence2", "C:\\Users\\Nara\\Workspace\\datasets\\Contrats\\datasetJson2")

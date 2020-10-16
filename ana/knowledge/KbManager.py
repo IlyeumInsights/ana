@@ -48,11 +48,11 @@ with CONTRACT_KB:
         pass
     class has_title(Clause >> str, FunctionalProperty):
         pass
-    class is_valid(Clause >> bool):
+    class is_valid(Clause >> bool, FunctionalProperty):
         pass
-    class violates_policy(Clause >> Policy):
+    class violates_policy(Text >> Policy):
         pass
-    class respects_policy(Clause >> Policy):
+    class respects_policy(Text >> Policy):
         pass
 
     class Sentence(Text):
@@ -169,11 +169,16 @@ class KbManager:
     def addAndAnalyzeClause(self, clauseTitle, clauseBody):
         clause = Clause(has_title=clauseTitle, has_text=clauseBody)
 
+        # Clause analysis
+        embConcept, nembConcept = self.checkConceptInText(clauseBody)
+        clause.has_concept = embConcept
+        clause.has_not_concept = nembConcept
+
         # Subtext decompositions
         sentences = []
         for sentStr in clauseBody.split("."):
             
-            newSent = Sentence(has_content=sentStr+".")
+            newSent = Sentence(has_text=sentStr+".")
             
             # Perform sentence analysis
             d = TextractTools.extractDurationDay(sentStr)
@@ -188,13 +193,29 @@ class KbManager:
 
         clause.has_subtext = sentences
 
+
+        print(clause.has_text)
         # Apply reasoning
         self.reason()
 
         # Gather result
-        print(clause.has_type.has_name)
-        print(clause.is_valid)
-        print(clause.violates_policy)
+        if clause.has_type:
+            ctype = str(clause.has_type.has_name)
+            print(ctype)
+        else:
+            ctype = None
+        cVali = str(clause.is_valid)
+        cVPol = []
+        if clause.violates_policy:
+            for violatedPol in clause.violates_policy:
+                cVPol.append(str(violatedPol.has_id))
+        sentences = []
+        if clause.has_subtext:
+            for subtext in clause.has_subtext:
+                if subtext.violates_policy:
+                    sentences.append(subtext.has_text)
+    
+        return ctype, cVali, cVPol, sentences
 
 
     def checkConceptInText(self, text):
@@ -213,5 +234,8 @@ class KbManager:
 
 kbm = KbManager()
 
+text = "le sous-traitant engage ne pas, directement ou indirectement, engager tout collaborateur agyla, meme si la sollicitation vient dudit collaborateur, en qualite de salarie ou de prestataire independant, le temps du present contrat et une annee apres son terme qu elle qu en soit la cause. defaut, et sans prejudice eventuels dommages et interets, le sous-traitant engage regler agyla en une fois, premiere demande, et sans delai, une somme representant douze fois la reemuneration mensuelle dudit collaborateur, calculee par la moyenne des remunerations mensuelles percues au titre des trois derniers mois de collaboration entre agyla et ledit collaborateur. le sous-traitant ne peut ceder le present contrat sans accord prealable et ecrit agyla."
 
-kbm.addAndAnalyzeClause("Modalite de paiement", "Le paiement s effectuera par  sous 30 jours")
+print( kbm.addAndAnalyzeClause("Non solicitation", text) )
+print( kbm.addAndAnalyzeClause("Non paiement", text) )
+print( kbm.addAndAnalyzeClause("Non paiement", text) )

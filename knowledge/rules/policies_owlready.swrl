@@ -1,9 +1,39 @@
 # Dummy rule 1
 # R1: Contract(?con) ^ has_clause(?con, ?c) ^ has_type(?c, ?t) ^ has_name(?t, ?n) ^ equals(?n, 'non_sollicitation') ^ Policy(?p) ^ has_id(?p, 'R1') -> respects_policy(?con, ?p)
 
-R2: Policy(?p) ^ has_id(?p, 'R2') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'non_sollicitation') ^ has_duration(?c, ?t) ^ greaterThan(?d, 360) -> violates_policy(?c, ?p)
+R2: Policy(?p) ^ has_id(?p, 'R2') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'non_sollicitation') ^ has_subtext(?c, ?s) ^ has_duration(?s, ?d) ^ greaterThan(?d, 365) -> violates_policy(?c, ?p), violates_policy(?s, ?p)
 
-R11: Policy(?p) ^ has_id(?p, 'R11') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'paiement') ^ has_subtext(?c, ?s) ^ has_concept(?s, ?conc) ^ has_name(?conc, 'cheque') -> violates_policy(?c, ?p)
-R11: Policy(?p) ^ has_id(?p, 'R11') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'paiement') ^ has_subtext(?c, ?s) ^ has_not_concept(?s, ?conc) ^ has_name(?conc, 'virement') -> violates_policy(?c, ?p)
+R3: Policy(?p) ^ has_id(?p, 'R3') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'non_sollicitation') ^ has_not_concept(?c, ?conc1) ^ has_name(?conc1, 'client') ^ has_concept(?c, ?conc2) ^ has_name(?conc2, 'partenaire') -> violates_policy(?c, ?p)
+
+R4: Policy(?p) ^ has_id(?p, 'R4') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'non_sollicitation') ^ has_subtext(?c, ?s) ^ has_duration(?s, ?d) ^ lessThan(?d, 360) ^ has_concept(?s, ?conc) ^ has_name(?conc, 'remuneration') -> violates_policy(?c, ?p), violates_policy(?s, ?p)
+R4: Policy(?p) ^ has_id(?p, 'R4') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'non_sollicitation') ^ has_not_concept(?c, ?conc) ^ has_name(?conc, 'remuneration') -> violates_policy(?c, ?p)
+
+R5: Policy(?p) ^ has_id(?p, 'R5') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'non_sollicitation') ^ has_concept(?c, ?conc1) ^ has_name(?conc1, 'fournisseur') ^ has_not_concept(?c, ?conc2) ^ has_name(?conc2, 'client') -> violates_policy(?c, ?p)
+
+#R6: Contract(?con) ^ has_clause(?con, ?c) ^ has_type(?c, ?t) ^ has_name(?t, 'resiliation') ^ has_concept(?c, 'convenance') ^ Policy(?p) ^ has_id(?p, 'R6') -> respects_policy(?con, ?p)
+
+R7: Policy(?p) ^ has_id(?p, 'R7') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'resiliation') ^ has_subtext(?c, ?s) ^ has_duration(?s, ?d) ^ greaterThan(?d, 60) -> violates_policy(?c, ?p), violates_policy(?s, ?p)
+R7: Policy(?p) ^ has_id(?p, 'R7') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'resiliation') ^ has_subtext(?c, ?s) ^ has_duration(?c, ?d) ^ lessThan(?d, 30) -> violates_policy(?c, ?p), violates_policy(?s, ?p)
+
+R8: Policy(?p) ^ has_id(?p, 'R8') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'resiliation') ^ has_concept(?c, ?conc1) ^ has_name(?conc1, 'fournisseur') ^ has_not_concept(?c, ?conc2) ^ has_name(?conc2, 'client') -> violates_policy(?c, ?p)
+
+R9: Policy(?p) ^ has_id(?p, 'R9') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'resiliation') ^ has_not_concept(?c, ?conc) ^ has_name(?conc, 'preavis') -> violates_policy(?c, ?p)
+
+# R10 not exact
+R10: Policy(?p) ^ has_id(?p, 'R10') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'resiliation') ^ has_concept(?c, ?conc) ^ has_name(?conc, 'preavis') ^ has_concept(?c, ?conc1) ^ has_name(?conc1, 'fournisseur') ^ has_not_concept(?c, ?conc2) ^ has_name(?conc2, 'client') -> violates_policy(?c, ?p)
+
+R11: Policy(?p) ^ has_id(?p, 'R11') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'paiement') ^ has_subtext(?c, ?s) ^ has_concept(?s, ?conc) ^ has_name(?conc, 'cheque') -> violates_policy(?c, ?p), violates_policy(?s, ?p)
+R11: Policy(?p) ^ has_id(?p, 'R11') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'paiement') ^ has_not_concept(?c, ?conc) ^ has_name(?conc, 'virement') -> violates_policy(?c, ?p)
  
-R12: Policy(?p) ^ has_id(?p, 'R12') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'paiement') ^ has_duration(?c, ?d) ^ greaterThan(?d, 45) -> violates_policy(?c, ?p)
+R12: Policy(?p) ^ has_id(?p, 'R12') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'paiement') ^ has_subtext(?c, ?s) ^ has_duration(?s, ?d) ^ greaterThan(?d, 45) -> violates_policy(?c, ?p), violates_policy(?s, ?p)
+
+#R13 
+R13: Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'indemnisation') ^ Policy(?p) ^ has_id(?p, 'R13') -> violates_policy(?c, ?p)
+
+#R14 is contextual
+
+R15: Policy(?p) ^ has_id(?p, 'R15') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'non_concurrence') ^ has_subtext(?c, ?s) ^ has_duration(?s, ?d) ^ greaterThan(?d, 365) -> violates_policy(?c, ?p), violates_policy(?s, ?p)
+
+#R16 no example
+
+#R17, R18, R19 and R20 (other) are too rare: require business expert !

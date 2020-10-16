@@ -19,12 +19,14 @@ import pickle
 import logging
 from joblib import load
 import numpy as np
+import json
 
 from sklearn.metrics import classification_report
 
 from ana.preparation import DataSelection, DataCleaning
 from ana.utils.Election import Election
 from ana import Settings
+from ana.knowledge import KbManager
 
 
 def evaluateModels(clause, phaseDir, modelNames, sentVote):
@@ -586,10 +588,78 @@ def evaluationOnTestSet():
     print("Best")
     print(classification_report(expeValT, predValT))
 
+def evaluationKbAnalysis(datasetPath):
+    """evaluationKbAnalysis
+
+    Evaluates the quality of the analysis through rules and KR.
+    Used for debugging and KR/rules design.
+    """
+
+    expectedType = []
+    expectedVali = []
+    expectedVPol = []
+
+    predType = []
+    predVali = []
+    predVPol = []
+
+    kbm = KbManager.KbManager()
+
+    # Go through all contract
+
+    for contractJson in os.listdir(datasetPath):
+        if contractJson.endswith(".json"):
+            filePath = os.path.join(datasetPath, contractJson)
+            with open(filePath, encoding="utf-8") as jsonFile:
+                contract = json.load(jsonFile)
+                for contractInstance in contract["instances"]:
+                    for clause in contractInstance["clauses"]:
+                        # Input
+                        ctitle = DataCleaning.clean(clause["title"])
+                        ctext = DataCleaning.clean(clause["text"])
+                        # Value to predict
+                        ctype = clause["labels"]["type"]
+                        cValid = clause["labels"]["invalidity"].strip()
+                        cvPol = clause["labels"]["policies"].strip()
+
+                        pType, pVali, pVpol, __ = kbm.addAndAnalyzeClause(ctitle, ctext)
+
+                        if not pVpol:
+                            pVpol = str(None)
+
+                        pType = str(pType)
+
+                        # Store results if in filter (TODO)                                    
+                        expectedType.append(ctype)
+                        expectedVali.append(cValid)
+                        expectedVPol.append(cvPol)
+
+                        predType.append(pType)
+                        predVali.append(pVali)
+                        predVPol.append(pVpol)
+
+    npeType = np.array(expectedType)
+    npeVali = np.array(expectedVali)
+    npeVPol = np.array(expectedVPol)
+
+    nppType = np.array(predType)
+    nppVali = np.array(predVali)
+    nppVPol = np.array(predVPol)
+
+    print("Type analysis")
+    print(classification_report(npeType, nppType))
+
+    print("Validity analysis")
+    print(classification_report(npeVali, nppVali))
+
+    # print("Violated polisis analysis")
+    # print(classification_report(npeVPol, nppVpol))
+
 
 if __name__ == "__main__":
-    logging.basicConfig(format='%(asctime)s %(levelname)-8s'
-                        '[%(filename)s:%(lineno)d] %(message)s',
-                        datefmt='%Y-%m-%d:%H:%M:%S',
-                        level=logging.DEBUG)
-    evaluationOnTestSet()
+    # logging.basicConfig(format='%(asctime)s %(levelname)-8s'
+    #                     '[%(filename)s:%(lineno)d] %(message)s',
+    #                     datefmt='%Y-%m-%d:%H:%M:%S',
+    #                     level=logging.DEBUG)
+    # evaluationOnTestSet()
+    evaluationKbAnalysis("")

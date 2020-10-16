@@ -27,8 +27,12 @@ def normalizeText(text):
     # Lowercase the text
     text = text.lower()
 
-    # Removed whitespace (or char in param) at begining and end of string
+    # Remove whitespace (or char in param) at begining and end of string
     text = text.strip()
+
+    # Remove quote
+    text = text.replace('"', ' ')
+    text = text.replace("'", ' ')
 
     return text
 
