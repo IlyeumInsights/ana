@@ -19,7 +19,7 @@ def extractValue(text):
     :type text: str
     :return: List of couple (value, unit)
     """
-    p = re.compile(r"\d+\s*(?:\w*)")
+    p = re.compile(r"\d+\s+(?:\w+)")
     res = p.findall(text)
 
     retList = []

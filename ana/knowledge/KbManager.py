@@ -4,6 +4,8 @@
 Manage an ontological Knowledge Base using owlready 2.
 Apply rules (loaded from RulesManager) on KB.
 
+Note: this module follows a different naming style for ontological concepts.
+
 Class
     KbManager
 """
@@ -88,22 +90,37 @@ class KbManager:
 
     """
     def __init__(self):
+        """Constructor
+
+        Ensure concepts and rules are loaded before adding any entities.
+        """
         self.addConcepts()
         self.loadPolicyRules(Settings.KL_LOC+f"rules\\policies_owlready.swrl") # TODO
         self.loadOntoRules(Settings.KL_ONTO_RULES)
 
     def addRules(self, rules):
+        """addRules
+
+        Add a set of rules in the ontology
+
+        :param rules: SWRL ready and OwlReady2 rules 
+        :type rules: [str]
+        """
         with CONTRACT_KB:
             for rule in rules:
-                print(rule)
+                # print(rule)
                 Imp().set_as_rule(rule)
 
 
     def loadPolicyRules(self, path):
-        """Relies on Rules Manager to load, format and add rules
+        """loadPolicyRules
+        
+        Relies on Rules Manager to load, format and add rules.
 
-        :param path: [description]
-        :type path: [type]
+        :see: addRules
+
+        :param path: Path of the rule files
+        :type path: str
         """
         rman = RulesManager(path)
         rules = rman.rules
@@ -122,10 +139,22 @@ class KbManager:
         self.addRules(formatRules)
 
     def loadOntoRules(self, path):
+        """loadOntoRules
+
+        Load rules specific to the ontologies and not related to policies 
+        validation rules.
+
+        :param path: Path to the ontology rules fule
+        :type path: str
+        """
         rules = loadRawRules(path)
         self.addRules(rules)
 
     def addConcepts(self):
+        """addConcepts
+
+        Load concepts and add them in the ontology
+        """
         # Types
         typesDict = self.loadTypesTerms()
         for clType in typesDict:
@@ -139,12 +168,36 @@ class KbManager:
             newConcept.has_terms = concDict[concept]
 
     def loadConceptTerms(self):
+        """loadConceptTerms
+
+        Load of the terms known for a concept from file.
+
+        :return: Dictionnary of concept associated to a list of term.
+        :rtype: {str, [str]}
+        """
         return self.loadTerms(Settings.KL_VOCAB_CONCEPT)
 
     def loadTypesTerms(self):
+        """loadConceptTerms
+
+        Load of the terms known for a clause type (is a concept) from file.
+
+        :return: Dictionnary of clause types associated to a list of term.
+        :rtype: {str, [str]}
+        """
         return self.loadTerms(Settings.KL_VOCAB)
 
     def loadTerms(self, vocabPath):
+        """loadTerms
+
+        Load terms for a concept from file.
+        A file carries a string of terms separated by a space.
+
+        :param vocabPath: Path to the directory of term
+        :type vocabPath: str
+        :return:  Dictionnary of concept associated to a list of term.
+        :rtype: {str, [str]}
+        """
 
         termDict = {}
 
@@ -161,12 +214,34 @@ class KbManager:
 
 
     def reason(self):
+        """reason
+
+        Apply pellet reasonner.        
+        Pellet doesn't like coma and quote !!
+        """
         sync_reasoner_pellet(
             infer_property_values = True,
             infer_data_property_values = True)
 
 
     def addAndAnalyzeClause(self, clauseTitle, clauseBody):
+        """addAndAnalyzeClause
+
+        Add a single clause to the ontology and provide its key properties
+        (validity, type, violated clause) after reasoning.
+        Commas are removed from text content.
+
+        :param clauseTitle: Title of the clause
+        :type clauseTitle: str
+        :param clauseBody: Content of the clause
+        :type clauseBody: str
+        :return: clause type, clause validaty as stringify boolean, list of
+            violated policies, list of notable sentences
+        :rtype: str, str, [str], [str]
+        """
+        clauseBody = clauseBody.replace(",", "")
+        # print(clauseBody)
+
         clause = Clause(has_title=clauseTitle, has_text=clauseBody)
 
         # Clause analysis
@@ -193,15 +268,12 @@ class KbManager:
 
         clause.has_subtext = sentences
 
-
-        print(clause.has_text)
         # Apply reasoning
         self.reason()
 
         # Gather result
         if clause.has_type:
             ctype = str(clause.has_type.has_name)
-            print(ctype)
         else:
             ctype = None
         cVali = str(clause.is_valid)
@@ -214,11 +286,21 @@ class KbManager:
             for subtext in clause.has_subtext:
                 if subtext.violates_policy:
                     sentences.append(subtext.has_text)
-    
+
         return ctype, cVali, cVPol, sentences
 
 
     def checkConceptInText(self, text):
+        """checkConceptInText
+
+        List concepts of ontologies that are and are not in the input text.
+        Performed as function to overcome limit of SWRL towards negations.
+
+        :param text: Text to review to find concepts
+        :type text: str
+        :return: Lists of found concepts and not found concepts
+        :rtype: [Concept], [Concept]
+        """
         conceptInText = []
         conceptNotInText = []
         for concept in Concept.instances():
@@ -229,13 +311,12 @@ class KbManager:
                 conceptNotInText.append(concept)
         return (conceptInText, conceptNotInText)
 
+    def clearOntology(self):
+        """clearOntology
 
-
-
-kbm = KbManager()
-
-text = "le sous-traitant engage ne pas, directement ou indirectement, engager tout collaborateur agyla, meme si la sollicitation vient dudit collaborateur, en qualite de salarie ou de prestataire independant, le temps du present contrat et une annee apres son terme qu elle qu en soit la cause. defaut, et sans prejudice eventuels dommages et interets, le sous-traitant engage regler agyla en une fois, premiere demande, et sans delai, une somme representant douze fois la reemuneration mensuelle dudit collaborateur, calculee par la moyenne des remunerations mensuelles percues au titre des trois derniers mois de collaboration entre agyla et ledit collaborateur. le sous-traitant ne peut ceder le present contrat sans accord prealable et ecrit agyla."
-
-print( kbm.addAndAnalyzeClause("Non solicitation", text) )
-print( kbm.addAndAnalyzeClause("Non paiement", text) )
-print( kbm.addAndAnalyzeClause("Non paiement", text) )
+        Clear all instances of ontology.
+        Useful for performance issue when reasoning on many clauses that are not
+        meant to be stored.
+        """
+        for textI in Text.instances():
+            destroy_entity(textI)

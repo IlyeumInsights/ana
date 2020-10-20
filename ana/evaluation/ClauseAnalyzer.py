@@ -605,6 +605,9 @@ def evaluationKbAnalysis(datasetPath):
 
     kbm = KbManager.KbManager()
 
+    # Restriction list:
+    clTypes = ["resiliation"]
+
     # Go through all contract
 
     for contractJson in os.listdir(datasetPath):
@@ -618,25 +621,40 @@ def evaluationKbAnalysis(datasetPath):
                         ctitle = DataCleaning.clean(clause["title"])
                         ctext = DataCleaning.clean(clause["text"])
                         # Value to predict
-                        ctype = clause["labels"]["type"]
+                        ctype = clause["labels"]["type"].strip()
                         cValid = clause["labels"]["invalidity"].strip()
                         cvPol = clause["labels"]["policies"].strip()
 
-                        pType, pVali, pVpol, __ = kbm.addAndAnalyzeClause(ctitle, ctext)
+                        # If text non empty and key type of clause
+                        if ctext != "" and not ctext.isspace() and ctype in clTypes:
+                            kbm.clearOntology()
+                            pType, pVali, pVpol, __ = kbm.addAndAnalyzeClause(ctitle, ctext)
 
-                        if not pVpol:
-                            pVpol = str(None)
+                            if not pVpol:
+                                pVpol = str(None)
 
-                        pType = str(pType)
+                            pType = str(pType)
 
-                        # Store results if in filter (TODO)                                    
-                        expectedType.append(ctype)
-                        expectedVali.append(cValid)
-                        expectedVPol.append(cvPol)
+                            # Store results if in filter (DONE)                                    
+                            expectedType.append(ctype)
+                            expectedVali.append(cValid)
+                            expectedVPol.append(cvPol)
 
-                        predType.append(pType)
-                        predVali.append(pVali)
-                        predVPol.append(pVpol)
+                            predType.append(pType)
+                            predVali.append(pVali)
+                            if cvPol in pVpol:
+                                predVPol.append(cvPol)
+                            elif pVpol is not None and pVpol != "None":
+                                predVPol.append(str(pVpol[0]))
+                            else:
+                                predVPol.append(str(None))
+
+                            if ctype != pType or cValid != pVali:
+                                print(ctype+" got "+pType)
+                                print(cValid+" got "+pVali)
+                                print(cvPol+" got "+str(pVpol))
+                                print(ctitle)
+                                print(ctext)
 
     npeType = np.array(expectedType)
     npeVali = np.array(expectedVali)
@@ -650,10 +668,10 @@ def evaluationKbAnalysis(datasetPath):
     print(classification_report(npeType, nppType))
 
     print("Validity analysis")
-    print(classification_report(npeVali, nppVali))
+    print(classification_report(npeVali, nppVali)) 
 
-    # print("Violated polisis analysis")
-    # print(classification_report(npeVPol, nppVpol))
+    print("Violated polisis analysis")
+    print(classification_report(npeVPol, nppVPol))
 
 
 if __name__ == "__main__":

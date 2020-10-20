@@ -1,7 +1,7 @@
 # Dummy rule 1
 # R1: Contract(?con) ^ has_clause(?con, ?c) ^ has_type(?c, ?t) ^ has_name(?t, ?n) ^ equals(?n, 'non_sollicitation') ^ Policy(?p) ^ has_id(?p, 'R1') -> respects_policy(?con, ?p)
 
-R2: Policy(?p) ^ has_id(?p, 'R2') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'non_sollicitation') ^ has_subtext(?c, ?s) ^ has_duration(?s, ?d) ^ greaterThan(?d, 365) -> violates_policy(?c, ?p), violates_policy(?s, ?p)
+R2: Policy(?p) ^ has_id(?p, 'R2') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'non_sollicitation') ^ has_subtext(?c, ?s) ^ has_duration(?s, ?d) ^ lessThan(?d, 365) -> violates_policy(?c, ?p), violates_policy(?s, ?p)
 
 R3: Policy(?p) ^ has_id(?p, 'R3') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'non_sollicitation') ^ has_not_concept(?c, ?conc1) ^ has_name(?conc1, 'client') ^ has_concept(?c, ?conc2) ^ has_name(?conc2, 'partenaire') -> violates_policy(?c, ?p)
 

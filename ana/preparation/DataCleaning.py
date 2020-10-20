@@ -63,6 +63,7 @@ def clean(text):
     text = normalizeText(text)
     text = mergeTextLines(text)
     text = filterText(text, 1)
+    text = convertNumber(text)
     return text
 
 
@@ -129,3 +130,4 @@ def convertNumber(text, lang="fr"):
     :type text: str
     """
     text = text_to_num.alpha2digit(text, lang)
+    return text
