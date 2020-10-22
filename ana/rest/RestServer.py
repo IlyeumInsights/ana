@@ -192,7 +192,6 @@ def classifyTextReasoning():
         abort(400)
     else:
         logging.info("Reasoning and generating answer...")
-        print("Reasoning and generating answer...")
 
         message = request.json
 
@@ -207,7 +206,7 @@ def classifyTextReasoning():
             'anomaly': aType,
             'sentence': sent
         }
-        print("Sending answer...")
+        # print("Sending answer...")
         return jsonify(answer), 201
 
 if __name__ == '__main__':

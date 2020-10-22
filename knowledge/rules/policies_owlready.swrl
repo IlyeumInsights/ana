@@ -13,7 +13,7 @@ R5: Policy(?p) ^ has_id(?p, 'R5') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t,
 #R6: Contract(?con) ^ has_clause(?con, ?c) ^ has_type(?c, ?t) ^ has_name(?t, 'resiliation') ^ has_concept(?c, 'convenance') ^ Policy(?p) ^ has_id(?p, 'R6') -> respects_policy(?con, ?p)
 
 R7: Policy(?p) ^ has_id(?p, 'R7') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'resiliation') ^ has_subtext(?c, ?s) ^ has_duration(?s, ?d) ^ greaterThan(?d, 60) -> violates_policy(?c, ?p), violates_policy(?s, ?p)
-R7: Policy(?p) ^ has_id(?p, 'R7') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'resiliation') ^ has_subtext(?c, ?s) ^ has_duration(?c, ?d) ^ lessThan(?d, 30) -> violates_policy(?c, ?p), violates_policy(?s, ?p)
+R7: Policy(?p) ^ has_id(?p, 'R7') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'resiliation') ^ has_subtext(?c, ?s) ^ has_duration(?s, ?d) ^ lessThan(?d, 30) -> violates_policy(?c, ?p), violates_policy(?s, ?p)
 
 R8: Policy(?p) ^ has_id(?p, 'R8') ^ Clause(?c) ^ has_type(?c, ?t) ^ has_name(?t, 'resiliation') ^ has_concept(?c, ?conc1) ^ has_name(?conc1, 'fournisseur') ^ has_not_concept(?c, ?conc2) ^ has_name(?conc2, 'client') -> violates_policy(?c, ?p)
 

@@ -473,6 +473,7 @@ def analyzeClauseReasoning(clause, clauseTitle):
 
     cType, isValid, anomType, sent = kbm.addAndAnalyzeClause(clauseTitle, clause)
     isAnom = not isValid # TODO
+    
 
     # To enable if storage
     kbm.clearOntology()
