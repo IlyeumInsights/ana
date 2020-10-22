@@ -16,6 +16,7 @@ from owlready2 import *
 from ana import Settings
 from ana.knowledge.RulesManager import RulesManager, loadRawRules
 from ana.utils import TextractTools
+from ana.utils.Singleton import Singleton
 
 # Ontological structure
 
@@ -83,10 +84,11 @@ with CONTRACT_KB:
     class has_clause(Contract >> Clause):
         pass
 
-class KbManager:
+class KbManager(metaclass=Singleton):
     """Class KbManager
 
     Set up and interact with the ontological knwoledge base.
+    Singleton class as loading is to be performed once.
 
     """
     def __init__(self):
@@ -114,7 +116,7 @@ class KbManager:
 
     def loadPolicyRules(self, path):
         """loadPolicyRules
-        
+
         Relies on Rules Manager to load, format and add rules.
 
         :see: addRules
@@ -276,7 +278,11 @@ class KbManager:
             ctype = str(clause.has_type.has_name)
         else:
             ctype = None
-        cVali = str(clause.is_valid)
+        # cVali = str(clause.is_valid[0])
+        if clause.is_valid is None:  # if None -> is valid is true
+            cVali = True
+        else: # Rules only set is_valid to false
+            cVali = False
         cVPol = []
         if clause.violates_policy:
             for violatedPol in clause.violates_policy:

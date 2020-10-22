@@ -26,7 +26,7 @@ from sklearn.metrics import classification_report
 from ana.preparation import DataSelection, DataCleaning
 from ana.utils.Election import Election
 from ana import Settings
-from ana.knowledge import KbManager
+from ana.knowledge.KbManager import KbManager
 
 
 def evaluateModels(clause, phaseDir, modelNames, sentVote):
@@ -464,6 +464,22 @@ def analyzeClauseBetaGamma(clause, clauseType):
 
     return isAnom, anomTypes
 
+
+def analyzeClauseReasoning(clause, clauseTitle):
+    kbm = KbManager()
+
+    clause = DataCleaning.clean(clause)
+    clauseTitle = DataCleaning.clean(clauseTitle)
+
+    cType, isValid, anomType, sent = kbm.addAndAnalyzeClause(clauseTitle, clause)
+    isAnom = not isValid # TODO
+
+    # To enable if storage
+    kbm.clearOntology()
+
+    return cType, isAnom, anomType, sent
+
+
 def convertLabelToVal(label, classList):
     """convertLabelToVal
 
@@ -603,7 +619,7 @@ def evaluationKbAnalysis(datasetPath):
     predVali = []
     predVPol = []
 
-    kbm = KbManager.KbManager()
+    kbm = KbManager()
 
     # Restriction list:
     clTypes = ["resiliation"]
