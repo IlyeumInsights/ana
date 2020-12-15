@@ -105,7 +105,7 @@ def evaluateClauseTypeVocab(clause, mapping):
     :rtype: str
     """
 
-    # vocabPath = f"Vocab\\"
+    # vocabPath = f"Vocab/"
     vocabPath = Settings.KL_VOCAB
 
     vocab = {}
@@ -156,8 +156,8 @@ def evaluatePhaseOne(clause, clauseTitle=None):
     """
     logging.info("Evaluation Phase 1")
 
-    phaseOneDir = os.path.join(Settings.MODEL_PIPELINES, f"phase1\\")
-    # phaseOneDir = f"Models\\pipeline\\phase1\\"
+    phaseOneDir = os.path.join(Settings.MODEL_PIPELINES, f"phase1/")
+    # phaseOneDir = f"Models/pipeline/phase1/"
     nbFilePerModel = 5
 
     nbFile = len(os.listdir(phaseOneDir))
@@ -215,9 +215,9 @@ def evaluatePhaseTwo(clause, clauseType):
     if clauseType is None or clauseType == "None":
         clauseType = "default"
 
-    phaseTwoDir = os.path.join(Settings.MODEL_PIPELINES, "phase2\\")
+    phaseTwoDir = os.path.join(Settings.MODEL_PIPELINES, "phase2/")
     phaseTwoDir = os.path.join(phaseTwoDir, clauseType)
-    # phaseTwoDir = "Models\\pipeline\\phase2\\"+clauseType
+    # phaseTwoDir = "Models/pipeline/phase2/"+clauseType
     nbFilePerModel = 5
 
     nbFile = len(os.listdir(phaseTwoDir))
@@ -261,9 +261,9 @@ def evaluatePhaseThree(clause, clauseType):
     if clauseType is None or clauseType == "None":
         clauseType = "default"
 
-    phaseThreeDir = os.path.join(Settings.MODEL_PIPELINES, "phase3\\")
+    phaseThreeDir = os.path.join(Settings.MODEL_PIPELINES, "phase3/")
     phaseThreeDir = os.path.join(phaseThreeDir, clauseType)
-    # phaseThreeDir = "Models\\pipeline\\phase3\\"+clauseType
+    # phaseThreeDir = "Models/pipeline/phase3/"+clauseType
     nbFilePerModel = 5
 
     nbFile = len(os.listdir(phaseThreeDir))

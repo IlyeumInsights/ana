@@ -97,7 +97,7 @@ class KbManager(metaclass=Singleton):
         Ensure concepts and rules are loaded before adding any entities.
         """
         self.addConcepts()
-        self.loadPolicyRules(Settings.KL_LOC+f"rules\\policies_owlready.swrl") # TODO
+        self.loadPolicyRules(Settings.KL_LOC+f"rules/policies_owlready.swrl") # TODO
         self.loadOntoRules(Settings.KL_ONTO_RULES)
 
     def addRules(self, rules):
